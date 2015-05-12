@@ -1,0 +1,113 @@
+# Copyright (C) 2015 Thingsym
+# This file is distributed under the same license as the Back to the Top package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Back to the Top 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/backtothetop\n"
+"POT-Creation-Date: 2015-04-23 07:43:26+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Thingsym\n"
+"Language-Team: Thingsym\n"
+
+#. #-#-#-#-#  backtothetop.pot (Back to the Top 1.0.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: backtothetop.php:73 backtothetop.php:74 backtothetop.php:196
+msgid "Back to the Top"
+msgstr ""
+
+#: backtothetop.php:106
+msgid "Settings"
+msgstr "設定"
+
+#: backtothetop.php:205 backtothetop.php:207
+msgid "Preview"
+msgstr "プレビュー"
+
+#: backtothetop.php:212
+msgid "Label"
+msgstr "ラベル"
+
+#: backtothetop.php:230 backtothetop.php:232
+msgid "Font Size"
+msgstr "フォントサイズ"
+
+#: backtothetop.php:233
+msgid "%"
+msgstr "%"
+
+#: backtothetop.php:236 backtothetop.php:238
+msgid "Font Weight"
+msgstr "フォントの太さ"
+
+#: backtothetop.php:243 backtothetop.php:245
+msgid "Font Color"
+msgstr "フォントの色"
+
+#: backtothetop.php:249 backtothetop.php:251
+msgid "Font Hover Color"
+msgstr "フォントの色 (ホバー時)"
+
+#: backtothetop.php:256 backtothetop.php:258
+msgid "Custom CSS"
+msgstr "カスタムCSS"
+
+#: backtothetop.php:264 backtothetop.php:266
+msgid "Display of the link"
+msgstr "リンクの表示"
+
+#: backtothetop.php:269
+msgid "Position"
+msgstr "位置"
+
+#: backtothetop.php:278
+msgid "Margin"
+msgstr "マージン"
+
+#: backtothetop.php:288 backtothetop.php:290
+msgid "Operation period of the animation"
+msgstr "アニメーションの継続時間"
+
+#: backtothetop.php:291 backtothetop.php:325 backtothetop.php:331
+msgid "ms"
+msgstr "ミリ秒"
+
+#: backtothetop.php:294 backtothetop.php:296
+msgid "Effects easing"
+msgstr "エフェクト動作"
+
+#: backtothetop.php:310 backtothetop.php:312
+msgid "Offset from the reference point of the stop position"
+msgstr "スクロール停止位置の基準点"
+
+#: backtothetop.php:316 backtothetop.php:318
+msgid "Scroll position to display a link to the top of the page"
+msgstr "リンクを表示するスクロール位置"
+
+#: backtothetop.php:322 backtothetop.php:324
+msgid "Speed ​​of the fade-in"
+msgstr "フェードインの速度"
+
+#: backtothetop.php:328 backtothetop.php:330
+msgid "Speed ​​of the fade-out"
+msgstr "フェードアウトの速度"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/thingsym/backtothetop"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Back to the Top is a WordPress plugin to return to scroll smoothly to the "
+"top of the page. You can scroll to the smooth anchor link in the page."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "thingsym"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.thingslabo.com/"
+msgstr ""
