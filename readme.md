@@ -1,5 +1,7 @@
 # Introducing Back to the Top
 
+[![Build Status](https://travis-ci.org/thingsym/back-to-the-top.svg?branch=master)](https://travis-ci.org/thingsym/back-to-the-top)
+
 Back to the Top is a WordPress plugin that return to scroll smoothly to the top of the page. You can scroll to the smooth anchor link in the page.
 
 
