@@ -1,15 +1,12 @@
 /*
  * jQuery Plugin Back to the Top
- * Version 1.1.4
+ * Version 1.1.5
  * Copyright 2012-2015 thingsym
  * URI: http://project.thingslabo.com/jquery.backtothetop
  * Repository: https://github.com/thingsym/jquery.backtothetop
- * Dual licensed under the MIT and GPL licenses.
+ * License: Dual licensed under the MIT and GPLv2 licenses.
  * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
- * Required: jQuery 1.7.+ (http://jquery.com/download/)
- *           jquery.easing 1.3.+ (http://gsgd.co.uk/sandbox/jquery/easing/)
- *           jQuery UI (http://jqueryui.com/)
+ * http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 (function($) {
@@ -32,7 +29,7 @@
       bottom: 0,
       left: 0,
       right: 0,
-      zIndex: 99999,
+      zIndex: 999,
       position : 'fixed'
     };
 
@@ -64,6 +61,7 @@
       var bottom = elem.data('backtothetop-fixed-bottom') ? elem.data('backtothetop-fixed-bottom') : defaults.bottom ;
       var left = elem.data('backtothetop-fixed-left') ? elem.data('backtothetop-fixed-left') : defaults.left ;
       var right = elem.data('backtothetop-fixed-right') ? elem.data('backtothetop-fixed-right') : defaults.right ;
+      var zindex = elem.data('backtothetop-fixed-zindex') ? elem.data('backtothetop-fixed-zindex') : defaults.zIndex ;
 
       if (display == 'top-left') {
         bottom = 'none';
@@ -91,7 +89,7 @@
             'bottom' : bottom,
             'left' : left,
             'right' : right,
-            'zIndex' : defaults.zIndex,
+            'zIndex' : zindex,
             'position' : defaults.position
           });
 
