@@ -30,10 +30,20 @@
  */
 
 class Back_to_the_Top {
+	protected $option_group = 'back_to_the_top';
+	protected $option_name = 'back_to_the_top_options';
+
+	protected $page_title = 'Back to the Top';
+	protected $menu_title = 'Back to the Top';
+	protected $menu_slug = 'backtothetop';
+	protected $capability = 'manage_options';
+
+	protected $textdomain = 'backtothetop';
+	protected $languages_path = 'back-to-the-top/languages';
 
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_filter( 'option_page_capability_back_to_the_top', array( $this, 'option_page_capability' ) );
+		add_filter( 'option_page_capability_' . $this->option_group, array( $this, 'option_page_capability' ) );
 		add_action( 'admin_menu', array( $this, 'add_option_page' ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -45,34 +55,35 @@ class Back_to_the_Top {
 
 	public function admin_init() {
 		if ( false === $this->get_options() ) {
-			add_option( 'back_to_the_top_options' );
+			add_option( $option_name );
 		}
 
 		register_setting(
-			'back_to_the_top',
-			'back_to_the_top_options',
+			$this->option_group,
+			$this->option_name,
 			array( $this, 'validate' )
 		);
 	}
 
-	public function uninstall() {
-		delete_option( 'back_to_the_top_options' );
+	static function uninstall() {
+		$backtothetop = new Back_to_the_Top;
+		delete_option( $backtothetop->option_name );
 	}
 
 	public function option_page_capability() {
-		return 'manage_options';
+		return $this->capability;
 	}
 
 	public function add_option_page() {
-		load_plugin_textdomain( 'backtothetop', false, 'back-to-the-top/languages' );
+		load_plugin_textdomain( $this->textdomain, false, $this->languages_path );
 
 		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
 
 		$page_hook = add_theme_page(
-			__( 'Back to the Top', 'backtothetop' ),
-			__( 'Back to the Top', 'backtothetop' ),
-			'manage_options',
-			'backtothetop',
+			__( $this->page_title, $this->textdomain ),
+			__( $this->menu_title, $this->textdomain ),
+			$this->option_page_capability(),
+			$this->menu_slug,
 			array( $this, 'render_option_page' )
 		);
 
@@ -104,7 +115,7 @@ class Back_to_the_Top {
 			return $links;
 		}
 
-		$settings_link = '<a href="themes.php?page=backtothetop">' . __( 'Settings', 'backtothetop' ) . '</a>';
+		$settings_link = '<a href="themes.php?page=backtothetop">' . __( 'Settings', $this->textdomain ) . '</a>';
 
 		array_unshift( $links, $settings_link );
 
@@ -137,7 +148,7 @@ class Back_to_the_Top {
 	}
 
 	public function get_options() {
-		$options = get_option( 'back_to_the_top_options', $this->get_default_options() );
+		$options = get_option( $this->option_name, $this->get_default_options() );
 		$default_options = $this->get_default_options();
 
 		foreach ( $default_options as $key => $value ) {
@@ -150,28 +161,28 @@ class Back_to_the_Top {
 	}
 
 	public function render_option_page() {
+		$options = $this->get_options();
 		?>
 		<div class="wrap">
 			<div id="icon-themes" class="icon32"><br></div>
-			<h2><?php printf( __( 'Back to the Top', 'backtothetop' ), wp_get_theme()->get( 'Name' ) ); ?></h2>
+			<h2><?php printf( __( 'Back to the Top', $this->textdomain ), wp_get_theme()->get( 'Name' ) ); ?></h2>
 			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
 				<?php
 					settings_fields( 'back_to_the_top' );
-					$options = $this->get_options();
 				?>
 				<table class="form-table">
-					<tr><th scope="row"><?php esc_html_e( 'Preview', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Preview', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Preview', 'backtothetop' ); ?></span></legend>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Preview', $this->textdomain ); ?></span></legend>
 							<a href="#" id="backtothetop-fixed" class="backtothetop-viewer"><?php echo esc_html( $options['label'] ); ?></a>
 						</td>
 					</tr>
 
-					<tr><th scope="row"><?php esc_html_e( 'Label', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Label', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Label', 'backtothetop' ); ?></span></legend>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Label', $this->textdomain ); ?></span></legend>
 							<label><input type="text" name="back_to_the_top_options[label]" value="<?php esc_attr_e( $options['label'] ); ?>" size="32"></label>
 
 							<p>
@@ -191,46 +202,46 @@ class Back_to_the_Top {
 							</p>
 						</td>
 					</tr>
-					<tr><th scope="row"><?php esc_html_e( 'Font Size', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Font Size', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Font Size', 'backtothetop' ); ?></span></legend>
-							<label><input type="number" step="10" min="0" name="back_to_the_top_options[font-size]" value="<?php echo esc_attr( $options['font-size'] ); ?>" class="small-text"> <?php esc_html_e( '%', 'backtothetop' ); ?></label>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Font Size', $this->textdomain ); ?></span></legend>
+							<label><input type="number" step="10" min="0" name="back_to_the_top_options[font-size]" value="<?php echo esc_attr( $options['font-size'] ); ?>" class="small-text"> <?php esc_html_e( '%', $this->textdomain ); ?></label>
 						</td>
 					</tr>
-					<tr><th scope="row"><?php esc_html_e( 'Font Weight', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Font Weight', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Font Weight', 'backtothetop' ); ?></span></legend>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Font Weight', $this->textdomain ); ?></span></legend>
 							<label><input type="number" step="100" min="100" max="900" name="back_to_the_top_options[font-weight]" value="<?php echo esc_attr( $options['font-weight'] ); ?>" class="small-text"></label>
 						</td>
 					</tr>
 
-					<tr><th scope="row"><?php esc_html_e( 'Font Color', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Font Color', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Font Color', 'backtothetop' ); ?></span></legend>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Font Color', $this->textdomain ); ?></span></legend>
 							<label><input type="text" name="back_to_the_top_options[font-color]" value="#<?php echo esc_attr( $options['font-color'] ); ?>"></label>
 						</td>
 					</tr>
-					<tr><th scope="row"><?php esc_html_e( 'Font Hover Color', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Font Hover Color', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Font Hover Color', 'backtothetop' ); ?></span></legend>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Font Hover Color', $this->textdomain ); ?></span></legend>
 							<label><input type="text" name="back_to_the_top_options[font-hover-color]" value="#<?php echo esc_attr( $options['font-hover-color'] ); ?>"></label>
 						</td>
 					</tr>
 
-					<tr><th scope="row"><?php esc_html_e( 'Custom CSS', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Custom CSS', $this->textdomain ); ?></th>
 						<td>
-							<fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Custom CSS', 'backtothetop' ); ?></span></legend>
+							<fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Custom CSS', $this->textdomain ); ?></span></legend>
 								<textarea name="back_to_the_top_options[custom-css]" rows="8" cols="70"><?php echo esc_textarea( $options['custom-css'] ); ?></textarea>
 							</fieldset>
 						</td>
 					</tr>
 
-					<tr><th scope="row"><?php esc_html_e( 'Display of the link', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Display of the link', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Display of the link', 'backtothetop' ); ?></span></legend>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Display of the link', $this->textdomain ); ?></span></legend>
 
 							<div style="display: inline-block;margin-right: 1em;">
-							<h4 style="text-align: center;"><?php esc_html_e( 'Position', 'backtothetop' ); ?></h4>
+							<h4 style="text-align: center;"><?php esc_html_e( 'Position', $this->textdomain ); ?></h4>
 							<div style="display: inline-block;text-align: left;"><input type="radio" name="back_to_the_top_options[fixed-display]" value="top-left" <?php checked( 'top-left', $options['fixed-display'] ); ?>></div>
 							<div style="display: inline-block;float: right;text-align: right;"><input type="radio" name="back_to_the_top_options[fixed-display]" value="top-right" <?php checked( 'top-right', $options['fixed-display'] ); ?> style="margin-right: 0;"></div>
 							<div style="overflow: hidden;width: 110px;height:110px;"><i class="dashicons dashicons-id-alt" style="font-size: 800%;color: #999;line-height: 1;"></i></div>
@@ -239,7 +250,7 @@ class Back_to_the_Top {
 							</div>
 
 							<div style="display: inline-block;">
-							<h4 style="text-align: center;"><?php esc_html_e( 'Margin', 'backtothetop' ); ?></h4>
+							<h4 style="text-align: center;"><?php esc_html_e( 'Margin', $this->textdomain ); ?></h4>
 							<div style="display: block;text-align: center;"><input type="number" step="1" min="0" name="back_to_the_top_options[fixed-top]" value="<?php echo esc_attr( $options['fixed-top'] ); ?>" class="small-text"> px</div>
 							<div style="display: inline-block;"><input type="number" step="1" min="0" name="back_to_the_top_options[fixed-left]" value="<?php echo esc_attr( $options['fixed-left'] ); ?>" class="small-text"> px</div>
 							<div style="display: inline-block;overflow: hidden;width: 110px;height:110px;vertical-align: middle;"><i class="dashicons dashicons-id-alt" style="font-size: 800%;color: #999;line-height: 1;"></i></div>
@@ -249,50 +260,50 @@ class Back_to_the_Top {
 						</td>
 					</tr>
 
-					<tr><th scope="row"><?php esc_html_e( 'Operation period of the animation', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Operation period of the animation', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Operation period of the animation', 'backtothetop' ); ?></span></legend>
-							<label><input type="number" step="100" min="0" name="back_to_the_top_options[duration]" value="<?php echo esc_attr( $options['duration'] ); ?>" class="small-text"> <?php esc_html_e( 'ms', 'backtothetop' ); ?></label>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Operation period of the animation', $this->textdomain ); ?></span></legend>
+							<label><input type="number" step="100" min="0" name="back_to_the_top_options[duration]" value="<?php echo esc_attr( $options['duration'] ); ?>" class="small-text"> <?php esc_html_e( 'ms', $this->textdomain ); ?></label>
 						</td>
 					</tr>
-					<tr><th scope="row"><?php esc_html_e( 'Effects easing', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Effects easing', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Effects easing', 'backtothetop' ); ?></span></legend>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Effects easing', $this->textdomain ); ?></span></legend>
 							<select name="back_to_the_top_options[easing]">
 							<?php
 								foreach ( $this->get_easings() as $easing ) {
 									echo '<option value="' . esc_attr( $easing ) . '" ';
 									echo selected( $easing, $options['easing'] );
 									echo '>';
-									esc_html_e( $easing, 'backtothetop' );
+									esc_html_e( $easing, $this->textdomain );
 									echo '</option>';
 								}
 							?>
 							</select>
 						</td>
 					</tr>
-					<tr><th scope="row"><?php esc_html_e( 'Offset from the reference point of the stop position', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Offset from the reference point of the stop position', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Offset from the reference point of the stop position', 'backtothetop' ); ?></span></legend>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Offset from the reference point of the stop position', $this->textdomain ); ?></span></legend>
 							<label><input type="number" step="1" name="back_to_the_top_options[offset]" value="<?php echo esc_attr( $options['offset'] ); ?>" class="small-text"> px</label>
 						</td>
 					</tr>
-					<tr><th scope="row"><?php esc_html_e( 'Scroll position to display a link to the top of the page', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Scroll position to display a link to the top of the page', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Scroll position to display a link to the top of the page', 'backtothetop' ); ?></span></legend>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Scroll position to display a link to the top of the page', $this->textdomain ); ?></span></legend>
 								<label><input type="number" step="1" min="0" name="back_to_the_top_options[fixed-scroll-offset]" value="<?php echo esc_attr( $options['fixed-scroll-offset'] ); ?>" class="small-text"> px</label>
 						</td>
 					</tr>
-					<tr><th scope="row"><?php esc_html_e( 'Speed ​​of the fade-in', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Speed ​​of the fade-in', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Speed ​​of the fade-in', 'backtothetop' ); ?></span></legend>
-							<label><input type="number" step="100" min="0" name="back_to_the_top_options[fixed-fadeIn]" value="<?php echo esc_attr( $options['fixed-fadeIn'] ); ?>" class="small-text"> <?php esc_html_e( 'ms', 'backtothetop' ); ?></label>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Speed ​​of the fade-in', $this->textdomain ); ?></span></legend>
+							<label><input type="number" step="100" min="0" name="back_to_the_top_options[fixed-fadeIn]" value="<?php echo esc_attr( $options['fixed-fadeIn'] ); ?>" class="small-text"> <?php esc_html_e( 'ms', $this->textdomain ); ?></label>
 						</td>
 					</tr>
-					<tr><th scope="row"><?php esc_html_e( 'Speed ​​of the fade-out', 'backtothetop' ); ?></th>
+					<tr><th scope="row"><?php esc_html_e( 'Speed ​​of the fade-out', $this->textdomain ); ?></th>
 						<td>
-							<legend class="screen-reader-text"><span><?php esc_html_e( 'Speed ​​of the fade-out', 'backtothetop' ); ?></span></legend>
-							<label><input type="number" step="100" min="0" name="back_to_the_top_options[fixed-fadeOut]" value="<?php echo esc_attr( $options['fixed-fadeOut'] ); ?>" class="small-text"> <?php esc_html_e( 'ms', 'backtothetop' ); ?></label>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Speed ​​of the fade-out', $this->textdomain ); ?></span></legend>
+							<label><input type="number" step="100" min="0" name="back_to_the_top_options[fixed-fadeOut]" value="<?php echo esc_attr( $options['fixed-fadeOut'] ); ?>" class="small-text"> <?php esc_html_e( 'ms', $this->textdomain ); ?></label>
 						</td>
 					</tr>
 
