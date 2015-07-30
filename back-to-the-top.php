@@ -59,8 +59,8 @@ class Back_to_the_Top {
 		delete_option( 'back_to_the_top_options' );
 	}
 
-	public function option_page_capability( $capability ) {
-		return 'edit_theme_options';
+	public function option_page_capability() {
+		return 'manage_options';
 	}
 
 	public function add_option_page() {
