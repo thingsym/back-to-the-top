@@ -100,7 +100,7 @@ class Back_to_the_Top {
 	}
 
 	public function admin_enqueue_scripts() {
-		wp_enqueue_script( 'backtothetop-icon', plugins_url() . '/back-to-the-top/backtothetop.admin.js', array( 'jquery', 'wp-color-picker' ), '2015-02-25', true );
+		wp_enqueue_script( 'backtothetop-admin', plugins_url() . '/back-to-the-top/backtothetop.admin.js', array( 'jquery', 'wp-color-picker' ), '2015-02-25', true );
 	}
 
 	public function admin_enqueue_styles() {
