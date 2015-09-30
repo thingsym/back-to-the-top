@@ -63,7 +63,7 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
     function admin_enqueue_scripts() {
         $this->Back_to_the_Top->admin_enqueue_scripts();
 
-        $this->assertTrue( wp_script_is( 'backtothetop-icon' ) );
+        $this->assertTrue( wp_script_is( 'backtothetop-admin' ) );
     }
 
     /**

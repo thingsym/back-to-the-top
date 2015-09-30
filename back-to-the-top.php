@@ -3,7 +3,7 @@
  * Plugin Name: Back to the Top
  * Plugin URI: https://github.com/thingsym/back-to-the-top
  * Description: Back to the Top is a WordPress plugin to return to scroll smoothly to the top of the page. You can scroll to the smooth anchor link in the page.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: thingsym
  * Author URI: http://www.thingslabo.com/
  * License: GPL2
@@ -55,7 +55,7 @@ class Back_to_the_Top {
 
 	public function admin_init() {
 		if ( false === $this->get_options() ) {
-			add_option( $option_name );
+			add_option( $this->option_name );
 		}
 
 		register_setting(
@@ -100,7 +100,7 @@ class Back_to_the_Top {
 	}
 
 	public function admin_enqueue_scripts() {
-		wp_enqueue_script( 'backtothetop-icon', plugins_url() . '/back-to-the-top/backtothetop.admin.js', array( 'jquery', 'wp-color-picker' ), '2015-02-25', true );
+		wp_enqueue_script( 'backtothetop-admin', plugins_url() . '/back-to-the-top/backtothetop.admin.js', array( 'jquery', 'wp-color-picker' ), '2015-02-25', true );
 	}
 
 	public function admin_enqueue_styles() {
