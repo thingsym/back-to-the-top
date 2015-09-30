@@ -55,7 +55,7 @@ class Back_to_the_Top {
 
 	public function admin_init() {
 		if ( false === $this->get_options() ) {
-			add_option( $option_name );
+			add_option( $this->option_name );
 		}
 
 		register_setting(
