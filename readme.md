@@ -43,12 +43,14 @@ a#backtothetop-fixed:hover {
 }
 ```
 
-
 ## Changelog
 
+* Version 1.0.2
+	* fixed: fix handle and option name
+	* fixed: fix typo
 * Version 1.0.1
 	* fixed: refactoring by the PHP_CodeSniffer
 	* updated: update jquery.backtothetop.js
 	* added: add PHPUnit and tests
 * Version 1.0.0
-	* Initial release
+	* initial release
