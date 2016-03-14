@@ -1,18 +1,6 @@
-/*
- * jQuery Plugin Back to the Top
- * Version 1.1.5
- * Copyright 2012-2015 thingsym
- * URI: http://project.thingslabo.com/jquery.backtothetop
- * Repository: https://github.com/thingsym/jquery.backtothetop
- * License: Dual licensed under the MIT and GPLv2 licenses.
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl-2.0.html
-*/
-
 (function($) {
-
   $(window).on("load", function() {
-    $('a[href^=#]').BackToTheTop();
+    $('a[href^="#"]').BackToTheTop();
   });
 
   $.fn.BackToTheTop = function( options ) {
@@ -36,7 +24,7 @@
     $.extend( defaults, options );
 
     var init = function() {
-      $('a[href^=#]').click(function() {
+      $('a[href^="#"]').click(function() {
         var scrollTop = $(this).data('backtothetop-scrolltop') !== undefined ? $(this).data('backtothetop-scrolltop') : $(this.hash).offset() ? $(this.hash).offset().top : $(this).attr('id') == 'backtothetop-fixed' && $(this).attr('href') == '#' ? 0 : null ;
 
         if (scrollTop === null)
@@ -46,6 +34,8 @@
         var easing = $(this).data('backtothetop-easing') ? $(this).data('backtothetop-easing') : defaults.easing ;
         var offset = $(this).data('backtothetop-offset') !== undefined ? $(this).data('backtothetop-offset') : defaults.offset ;
         $('html,body').animate({ 'scrollTop' : scrollTop + offset }, duration, easing);
+
+        return false;
       });
     };
 
