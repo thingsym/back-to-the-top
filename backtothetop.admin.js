@@ -3,13 +3,13 @@
 		$('a.icon-maker').on( 'click', function(e) {
 			var icon_name = $(this).children().attr('class');
 			var html = '<i class="' + icon_name + '"></i>';
-			var css = build_css()
+			var css = build_css();
 			$('input[name="back_to_the_top_options[label]"]').val(html);
 			$('.backtothetop-viewer').html(html + css);
 		});
 
 		function build_html() {
-			var css = build_css()
+			var css = build_css();
 			$('.backtothetop-viewer').html( $('input[name="back_to_the_top_options[label]"]').val() + css );
 		}
 
