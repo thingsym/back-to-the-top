@@ -1,12 +1,12 @@
 === Back to the Top ===
 
 Contributors: thingsym
-Donate link: 
+Donate link:
 Link: https://github.com/thingsym/back-to-the-top
 Tags: To top, Scroll top, Back to the Top
 Requires at least: 3.4
-Tested up to: 4.3
-Stable tag: 1.0.2
+Tested up to: 4.5
+Stable tag: 1.0.3
 License: GPL2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,12 +54,15 @@ a#backtothetop-fixed:hover {
 
 == Changelog ==
 
+= 1.0.3 =
+* fixed: fix backtothetop.admin.js
+* updated: update jquery.backtothetop.js v.1.1.6
 = 1.0.2 =
 * fixed: fix handle and option name
 * fixed: fix typo
 = 1.0.1 =
 * fixed: refactoring by the PHP_CodeSniffer
-* updated: update jquery.backtothetop.js
+* updated: update jquery.backtothetop.js v.1.1.5
 * added: add PHPUnit and tests
 = 1.0.0 =
 * initial release
