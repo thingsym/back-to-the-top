@@ -1,5 +1,5 @@
 (function($) {
-  $(window).on("load", function() {
+  $(window).on('load.BackToTheTop', function() {
     $('a[href^="#"]').BackToTheTop();
   });
 
@@ -9,6 +9,7 @@
       duration: 300,
       easing: 'swing',
       offset: 0,
+      hash: true,
       scrolloffset: 0,
       fadein: 'slow',
       fadeout: 'slow',
@@ -24,16 +25,30 @@
     $.extend( defaults, options );
 
     var init = function() {
-      $('a[href^="#"]').click(function() {
-        var scrollTop = $(this).data('backtothetop-scrolltop') !== undefined ? $(this).data('backtothetop-scrolltop') : $(this.hash).offset() ? $(this.hash).offset().top : $(this).attr('id') == 'backtothetop-fixed' && $(this).attr('href') == '#' ? 0 : null ;
+      $('a[href^="#"]').on('click.BackToTheTop', function() {
+        var scrollTop =
+            $(this).data('backtothetop-scrolltop') !== undefined ? $(this).data('backtothetop-scrolltop')
+          : $(this.hash).offset() ? $(this.hash).offset().top
+          : $(this).attr('id') == 'backtothetop-fixed' && $(this).attr('href') == '#' ? 0
+          : null ;
 
         if (scrollTop === null)
-            return;
+          return;
 
-        var duration = $(this).data('backtothetop-duration') ? $(this).data('backtothetop-duration') : defaults.duration ;
-        var easing = $(this).data('backtothetop-easing') ? $(this).data('backtothetop-easing') : defaults.easing ;
-        var offset = $(this).data('backtothetop-offset') !== undefined ? $(this).data('backtothetop-offset') : defaults.offset ;
-        $('html,body').animate({ 'scrollTop' : scrollTop + offset }, duration, easing);
+        var duration = typeof $(this).data('backtothetop-duration') === "undefined" ? defaults.duration : $(this).data('backtothetop-duration');
+        var easing = typeof $(this).data('backtothetop-easing') === "undefined" ?  defaults.easing : $(this).data('backtothetop-easing');
+        var offset = typeof $(this).data('backtothetop-offset') === "undefined" ? defaults.offset : $(this).data('backtothetop-offset');
+        var hash = typeof $(this).data('backtothetop-hash') === "undefined" ? defaults.hash : $(this).data('backtothetop-hash');
+        var href = $(this).attr('href');
+
+        $('html,body').animate(
+          { 'scrollTop' : scrollTop + offset }, duration, easing,
+          function() {
+            if (hash === true) {
+              window.history.pushState('', '', href);
+            }
+          }
+        );
 
         return false;
       });
@@ -43,15 +58,15 @@
       var elem = $('a#backtothetop-fixed');
       if ( !elem )
         return;
-      var scrollOffset = elem.data('backtothetop-fixed-scroll-offset') !== undefined ? elem.data('backtothetop-fixed-scroll-offset') : defaults.scrolloffset ;
-      var fadeIn = elem.data('backtothetop-fixed-fadein') ? elem.data('backtothetop-fixed-fadein') : defaults.fadein ;
-      var fadeOut = elem.data('backtothetop-fixed-fadeout') ? elem.data('backtothetop-fixed-fadeout') : defaults.fadeout ;
-      var display = elem.data('backtothetop-fixed-display') ? elem.data('backtothetop-fixed-display') : defaults.display ;
-      var top = elem.data('backtothetop-fixed-top') ? elem.data('backtothetop-fixed-top') : defaults.top ;
-      var bottom = elem.data('backtothetop-fixed-bottom') ? elem.data('backtothetop-fixed-bottom') : defaults.bottom ;
-      var left = elem.data('backtothetop-fixed-left') ? elem.data('backtothetop-fixed-left') : defaults.left ;
-      var right = elem.data('backtothetop-fixed-right') ? elem.data('backtothetop-fixed-right') : defaults.right ;
-      var zindex = elem.data('backtothetop-fixed-zindex') ? elem.data('backtothetop-fixed-zindex') : defaults.zIndex ;
+      var scrollOffset = typeof elem.data('backtothetop-fixed-scroll-offset') === "undefined" ? defaults.scrolloffset : elem.data('backtothetop-fixed-scroll-offset');
+      var fadeIn = typeof elem.data('backtothetop-fixed-fadein') === "undefined" ? defaults.fadein : elem.data('backtothetop-fixed-fadein');
+      var fadeOut = typeof elem.data('backtothetop-fixed-fadeout') === "undefined" ? defaults.fadeout : elem.data('backtothetop-fixed-fadeout');
+      var display = typeof elem.data('backtothetop-fixed-display') === "undefined" ? defaults.display : elem.data('backtothetop-fixed-display');
+      var top = typeof elem.data('backtothetop-fixed-top') === "undefined" ? defaults.top : elem.data('backtothetop-fixed-top');
+      var bottom = typeof elem.data('backtothetop-fixed-bottom') === "undefined" ? defaults.bottom : elem.data('backtothetop-fixed-bottom');
+      var left = typeof elem.data('backtothetop-fixed-left') === "undefined" ? defaults.left : elem.data('backtothetop-fixed-left');
+      var right = typeof elem.data('backtothetop-fixed-right') === "undefined" ? defaults.right : elem.data('backtothetop-fixed-right');
+      var zindex = typeof elem.data('backtothetop-fixed-zindex') === "undefined" ? defaults.zIndex : elem.data('backtothetop-fixed-zindex');
 
       if (display == 'top-left') {
         bottom = 'none';
@@ -72,7 +87,7 @@
 
       elem.css({ 'display' : 'none' });
 
-      $(window).scroll(function () {
+      $(window).on('scroll.BackToTheTop', function () {
         if ($(this).scrollTop() > scrollOffset) {
           elem.css({
             'top' : top,
@@ -98,6 +113,5 @@
 
     init();
     fixed();
-
   };
 })(jQuery);
