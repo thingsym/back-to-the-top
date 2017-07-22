@@ -381,7 +381,7 @@ class Back_to_the_Top {
 
 	public function enqueue_scripts() {
 		wp_enqueue_script( 'jquery-easing', '//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js', array( 'jquery' ), '2015-02-25', true );
-		wp_enqueue_script( 'jquery-backtothetop', plugins_url() . '/back-to-the-top/jquery.backtothetop.js', array( 'jquery' ), '2015-02-25', true );
+		wp_enqueue_script( 'jquery-backtothetop', plugins_url() . '/back-to-the-top/jquery.backtothetop.min.js', array( 'jquery' ), '2017-07-22', true );
 	}
 	public function enqueue_styles() {
 		wp_enqueue_style( 'dashicons' );
