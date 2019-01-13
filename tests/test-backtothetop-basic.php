@@ -32,6 +32,7 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
      * @group basic
      */
     function admin_init() {
+        $this->markTestIncomplete( 'This test has not been implemented yet.' );
     }
 
     /**
@@ -47,6 +48,7 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
      * @group basic
      */
     function add_option_page() {
+        $this->markTestIncomplete( 'This test has not been implemented yet.' );
     }
 
     /**
@@ -54,6 +56,7 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
      * @group basic
      */
     function page_hook_suffix() {
+        $this->markTestIncomplete( 'This test has not been implemented yet.' );
     }
 
     /**
@@ -83,6 +86,7 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
      * @group basic
      */
     function plugin_action_links() {
+        $this->markTestIncomplete( 'This test has not been implemented yet.' );
     }
 
     /**
