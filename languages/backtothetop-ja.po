@@ -109,5 +109,5 @@ msgid "thingsym"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://www.thingslabo.com/"
+msgid "https://www.thingslabo.com/"
 msgstr ""

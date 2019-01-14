@@ -15,7 +15,6 @@ Back to the Top is also a jQuery plugin. [Back to the Top Project Page here.](ht
 * Selectable the effects easing of the scroll
 * The iconic font supported, Dashicons and Font Awesome
 
-
 ## Install Back to the Top
 
 1. Download and unzip files. Or install 'Back to the Top' plugin using the WordPress plugin installer. In that case, skip 2.
@@ -43,17 +42,43 @@ a#backtothetop-fixed:hover {
 }
 ```
 
+## WordPress Plugin Directory
+
+Back to the Top is hosted on the WordPress Plugin Directory.
+
+[https://wordpress.org/plugins/back-to-the-top/](https://wordpress.org/plugins/back-to-the-top/)
+
+## Contribution
+
+### Patches and Bug Fixes
+
+Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
+
+1. Fork [Back to the Top](https://github.com/thingsym/back-to-the-top) from GitHub repository
+2. Create a feature branch: git checkout -b my-new-feature
+3. Commit your changes: git commit -am 'Add some feature'
+4. Push to the branch: git push origin my-new-feature
+5. Create new Pull Request
+
 ## Changelog
 
+* Version 1.0.4
+	* change Requires at least from 3.4 to 4.0
+	* improve CI environment
+	* updated: update jquery.backtothetop.js v1.1.7
 * Version 1.0.3
 	* fixed: fix backtothetop.admin.js
-	* updated: update jquery.backtothetop.js v.1.1.6
+	* updated: update jquery.backtothetop.js v1.1.6
 * Version 1.0.2
 	* fixed: fix handle and option name
 	* fixed: fix typo
 * Version 1.0.1
 	* fixed: refactoring by the PHP_CodeSniffer
-	* updated: update jquery.backtothetop.js v.1.1.5
+	* updated: update jquery.backtothetop.js v1.1.5
 	* added: add PHPUnit and tests
 * Version 1.0.0
 	* initial release
+
+## License
+
+Licensed under [GPLv2](https://www.gnu.org/licenses/gpl-2.0.html).

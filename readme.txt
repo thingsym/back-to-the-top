@@ -4,9 +4,10 @@ Contributors: thingsym
 Donate link:
 Link: https://github.com/thingsym/back-to-the-top
 Tags: To top, Scroll top, Back to the Top
-Requires at least: 3.4
-Tested up to: 4.5
-Stable tag: 1.0.3
+Requires at least: 4.0
+Requires PHP: 5.3
+Tested up to: 5.0.3
+Stable tag: 1.0.4
 License: GPL2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,15 +55,28 @@ a#backtothetop-fixed:hover {
 
 == Changelog ==
 
+= 1.0.4 =
+* change Requires at least from 3.4 to 4.0
+* improve CI environment
+* updated: update jquery.backtothetop.js v1.1.7
+
 = 1.0.3 =
 * fixed: fix backtothetop.admin.js
-* updated: update jquery.backtothetop.js v.1.1.6
+* updated: update jquery.backtothetop.js v1.1.6
+
 = 1.0.2 =
 * fixed: fix handle and option name
 * fixed: fix typo
+
 = 1.0.1 =
 * fixed: refactoring by the PHP_CodeSniffer
-* updated: update jquery.backtothetop.js v.1.1.5
+* updated: update jquery.backtothetop.js v1.1.5
 * added: add PHPUnit and tests
+
 = 1.0.0 =
 * initial release
+
+== Upgrade Notice ==
+
+= 1.0.4 =
+* Requires at least version 4.0 of the WordPress
