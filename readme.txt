@@ -4,7 +4,7 @@ Contributors: thingsym
 Donate link:
 Link: https://github.com/thingsym/back-to-the-top
 Tags: To top, Scroll top, Back to the Top
-Requires at least: 3.4
+Requires at least: 4.0
 Tested up to: 4.5
 Stable tag: 1.0.3
 License: GPL2 or later
