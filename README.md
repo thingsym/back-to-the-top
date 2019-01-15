@@ -62,15 +62,19 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+* Version 1.0.4
+	* change Requires at least from 3.4 to 4.0
+	* improve CI environment
+	* updated: update jquery.backtothetop.js v1.1.7
 * Version 1.0.3
 	* fixed: fix backtothetop.admin.js
-	* updated: update jquery.backtothetop.js v.1.1.6
+	* updated: update jquery.backtothetop.js v1.1.6
 * Version 1.0.2
 	* fixed: fix handle and option name
 	* fixed: fix typo
 * Version 1.0.1
 	* fixed: refactoring by the PHP_CodeSniffer
-	* updated: update jquery.backtothetop.js v.1.1.5
+	* updated: update jquery.backtothetop.js v1.1.5
 	* added: add PHPUnit and tests
 * Version 1.0.0
 	* initial release
