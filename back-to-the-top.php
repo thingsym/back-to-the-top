@@ -31,14 +31,14 @@
 
 class Back_to_the_Top {
 	protected $option_group = 'back_to_the_top';
-	protected $option_name = 'back_to_the_top_options';
+	protected $option_name  = 'back_to_the_top_options';
 
 	protected $page_title = 'Back to the Top';
 	protected $menu_title = 'Back to the Top';
-	protected $menu_slug = 'backtothetop';
+	protected $menu_slug  = 'backtothetop';
 	protected $capability = 'manage_options';
 
-	protected $textdomain = 'backtothetop';
+	protected $textdomain     = 'backtothetop';
 	protected $languages_path = 'back-to-the-top/languages';
 
 	public function __construct() {
@@ -66,7 +66,7 @@ class Back_to_the_Top {
 	}
 
 	static function uninstall() {
-		$backtothetop = new Back_to_the_Top;
+		$backtothetop = new Back_to_the_Top();
 		delete_option( $backtothetop->option_name );
 	}
 
@@ -124,31 +124,31 @@ class Back_to_the_Top {
 
 	public function get_default_options() {
 		$default_options = array(
-			'duration' => 400,
-			'easing' => 'swing',
-			'offset' => 0,
+			'duration'            => 400,
+			'easing'              => 'swing',
+			'offset'              => 0,
 			'fixed-scroll-offset' => 0,
-			'fixed-fadeIn' => 800,
-			'fixed-fadeOut' => 800,
-			'fixed-display' => 'bottom-right',
-			'fixed-top' => 0,
-			'fixed-bottom' => 0,
-			'fixed-left' => 0,
-			'fixed-right' => 0,
+			'fixed-fadeIn'        => 800,
+			'fixed-fadeOut'       => 800,
+			'fixed-display'       => 'bottom-right',
+			'fixed-top'           => 0,
+			'fixed-bottom'        => 0,
+			'fixed-left'          => 0,
+			'fixed-right'         => 0,
 
-			'label' => '<i class="dashicons dashicons-arrow-up-alt2"></i><br>Back to the Top',
-			'font-size' => 140,
-			'font-weight' => 400,
-			'font-color' => 'f00',
-			'font-hover-color' => 'f00',
-			'custom-css' => '',
+			'label'               => '<i class="dashicons dashicons-arrow-up-alt2"></i><br>Back to the Top',
+			'font-size'           => 140,
+			'font-weight'         => 400,
+			'font-color'          => 'f00',
+			'font-hover-color'    => 'f00',
+			'custom-css'          => '',
 		);
 
 		return apply_filters( 'back_to_the_top_get_default_options', $default_options );
 	}
 
 	public function get_options() {
-		$options = get_option( $this->option_name, $this->get_default_options() );
+		$options         = get_option( $this->option_name, $this->get_default_options() );
 		$default_options = $this->get_default_options();
 
 		foreach ( $default_options as $key => $value ) {
@@ -164,13 +164,13 @@ class Back_to_the_Top {
 		$options = $this->get_options();
 		?>
 		<div class="wrap">
-			<div id="icon-themes" class="icon32"><br></div>
-			<h2><?php printf( __( 'Back to the Top', $this->textdomain ), wp_get_theme()->get( 'Name' ) ); ?></h2>
+			<h2><?php esc_html_e( 'Back to the Top', $this->textdomain ); ?></h2>
 			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
 				<?php
-					settings_fields( 'back_to_the_top' );
+					settings_fields( $this->option_group );
+					do_settings_sections( $this->option_group );
 				?>
 				<table class="form-table">
 					<tr><th scope="row"><?php esc_html_e( 'Preview', $this->textdomain ); ?></th>
@@ -271,13 +271,13 @@ class Back_to_the_Top {
 							<legend class="screen-reader-text"><span><?php esc_html_e( 'Effects easing', $this->textdomain ); ?></span></legend>
 							<select name="back_to_the_top_options[easing]">
 							<?php
-								foreach ( $this->get_easings() as $easing ) {
-									echo '<option value="' . esc_attr( $easing ) . '" ';
-									echo selected( $easing, $options['easing'] );
-									echo '>';
-									esc_html_e( $easing, $this->textdomain );
-									echo '</option>';
-								}
+							foreach ( $this->get_easings() as $easing ) {
+								echo '<option value="' . esc_attr( $easing ) . '" ';
+								echo selected( $easing, $options['easing'] );
+								echo '>';
+								esc_html_e( $easing, $this->textdomain );
+								echo '</option>';
+							}
 							?>
 							</select>
 						</td>
@@ -322,13 +322,39 @@ class Back_to_the_Top {
 	 */
 	public function get_easings() {
 		$easings = array(
-			'linear', 'swing', 'jswing', 'easeInQuad', 'easeOutQuad', 'easeInOutQuad',
-			'easeInCubic', 'easeOutCubic', 'easeInOutCubic', 'easeInQuart', 'easeOutQuart',
-			'easeInOutQuart', 'easeInQuint', 'easeOutQuint', 'easeInOutQuint', 'easeInSine',
-			'easeOutSine', 'easeInOutSine', 'easeInExpo', 'easeOutExpo', 'easeInOutExpo',
-			'easeInCirc', 'easeOutCirc', 'easeInOutCirc', 'easeInElastic', 'easeOutElastic',
-			'easeInOutElastic', 'easeInBack', 'easeOutBack', 'easeInOutBack', 'easeInBounce',
-			'easeOutBounce', 'easeInOutBounce',
+			'linear',
+			'swing',
+			'jswing',
+			'easeInQuad',
+			'easeOutQuad',
+			'easeInOutQuad',
+			'easeInCubic',
+			'easeOutCubic',
+			'easeInOutCubic',
+			'easeInQuart',
+			'easeOutQuart',
+			'easeInOutQuart',
+			'easeInQuint',
+			'easeOutQuint',
+			'easeInOutQuint',
+			'easeInSine',
+			'easeOutSine',
+			'easeInOutSine',
+			'easeInExpo',
+			'easeOutExpo',
+			'easeInOutExpo',
+			'easeInCirc',
+			'easeOutCirc',
+			'easeInOutCirc',
+			'easeInElastic',
+			'easeOutElastic',
+			'easeInOutElastic',
+			'easeInBack',
+			'easeOutBack',
+			'easeInOutBack',
+			'easeInBounce',
+			'easeOutBounce',
+			'easeInOutBounce',
 		);
 
 		return apply_filters( 'back_to_the_top_get_easings', $easings );
@@ -341,7 +367,10 @@ class Back_to_the_Top {
 	 */
 	public function get_displays() {
 		$displays = array(
-			'bottom-right', 'bottom-left', 'top-right', 'top-left',
+			'bottom-right',
+			'bottom-left',
+			'top-right',
+			'top-left',
 		);
 
 		return apply_filters( 'back_to_the_top_get_displays', $displays );
@@ -356,22 +385,22 @@ class Back_to_the_Top {
 	public function validate( $input ) {
 		$output = $default_options = $this->get_default_options();
 
-		$output['duration'] = isset( $input['duration'] ) && is_numeric( $input['duration'] ) && $input['duration'] >= 0 ? $input['duration'] : $default_options['duration'];
-		$output['easing'] = isset( $input['easing'] ) && in_array( $input['easing'], $this->get_easings() ) ? $input['easing'] : $default_options['easing'];
-		$output['offset'] = isset( $input['offset'] ) && is_numeric( $input['offset'] ) ? $input['offset'] : $default_options['offset'];
+		$output['duration']            = isset( $input['duration'] ) && is_numeric( $input['duration'] ) && $input['duration'] >= 0 ? $input['duration'] : $default_options['duration'];
+		$output['easing']              = isset( $input['easing'] ) && in_array( $input['easing'], $this->get_easings() ) ? $input['easing'] : $default_options['easing'];
+		$output['offset']              = isset( $input['offset'] ) && is_numeric( $input['offset'] ) ? $input['offset'] : $default_options['offset'];
 		$output['fixed-scroll-offset'] = isset( $input['fixed-scroll-offset'] ) && is_numeric( $input['fixed-scroll-offset'] ) && $input['fixed-scroll-offset'] >= 0 ? $input['fixed-scroll-offset'] : $default_options['fixed-scroll-offset'];
-		$output['fixed-fadeIn'] = isset( $input['fixed-fadeIn'] ) && is_numeric( $input['fixed-fadeIn'] ) && $input['fixed-fadeIn'] >= 0 ? $input['fixed-fadeIn'] : $default_options['fixed-fadeIn'];
-		$output['fixed-fadeOut'] = isset( $input['fixed-fadeOut'] ) && is_numeric( $input['fixed-fadeOut'] ) && $input['fixed-fadeOut'] >= 0 ? $input['fixed-fadeOut'] : $default_options['fixed-fadeOut'];
-		$output['fixed-display'] = isset( $input['fixed-display'] ) && in_array( $input['fixed-display'], $this->get_displays() ) ? $input['fixed-display'] : $default_options['fixed-display'];
-		$output['fixed-top'] = isset( $input['fixed-top'] ) && is_numeric( $input['fixed-top'] ) && $input['fixed-top'] >= 0 ? $input['fixed-top'] : $default_options['fixed-top'];
-		$output['fixed-bottom'] = isset( $input['fixed-bottom'] ) && is_numeric( $input['fixed-bottom'] ) && $input['fixed-bottom'] >= 0 ? $input['fixed-bottom'] : $default_options['fixed-bottom'];
-		$output['fixed-left'] = isset( $input['fixed-left'] ) && is_numeric( $input['fixed-left'] ) && $input['fixed-left'] >= 0 ? $input['fixed-left'] : $default_options['fixed-left'];
-		$output['fixed-right'] = isset( $input['fixed-right'] ) && is_numeric( $input['fixed-right'] ) && $input['fixed-right'] >= 0 ? $input['fixed-right'] : $default_options['fixed-right'];
+		$output['fixed-fadeIn']        = isset( $input['fixed-fadeIn'] ) && is_numeric( $input['fixed-fadeIn'] ) && $input['fixed-fadeIn'] >= 0 ? $input['fixed-fadeIn'] : $default_options['fixed-fadeIn'];
+		$output['fixed-fadeOut']       = isset( $input['fixed-fadeOut'] ) && is_numeric( $input['fixed-fadeOut'] ) && $input['fixed-fadeOut'] >= 0 ? $input['fixed-fadeOut'] : $default_options['fixed-fadeOut'];
+		$output['fixed-display']       = isset( $input['fixed-display'] ) && in_array( $input['fixed-display'], $this->get_displays() ) ? $input['fixed-display'] : $default_options['fixed-display'];
+		$output['fixed-top']           = isset( $input['fixed-top'] ) && is_numeric( $input['fixed-top'] ) && $input['fixed-top'] >= 0 ? $input['fixed-top'] : $default_options['fixed-top'];
+		$output['fixed-bottom']        = isset( $input['fixed-bottom'] ) && is_numeric( $input['fixed-bottom'] ) && $input['fixed-bottom'] >= 0 ? $input['fixed-bottom'] : $default_options['fixed-bottom'];
+		$output['fixed-left']          = isset( $input['fixed-left'] ) && is_numeric( $input['fixed-left'] ) && $input['fixed-left'] >= 0 ? $input['fixed-left'] : $default_options['fixed-left'];
+		$output['fixed-right']         = isset( $input['fixed-right'] ) && is_numeric( $input['fixed-right'] ) && $input['fixed-right'] >= 0 ? $input['fixed-right'] : $default_options['fixed-right'];
 
-		$output['label'] = isset( $input['label'] ) ? $input['label'] : '';
-		$output['font-size'] = isset( $input['font-size'] ) && is_numeric( $input['font-size'] ) && $input['font-size'] >= 0 ? $input['font-size'] : $default_options['font-size'];
-		$output['font-weight'] = isset( $input['font-weight'] ) && is_numeric( $input['font-weight'] ) && $input['font-weight'] >= 100 && $input['font-weight'] <= 900 ? $input['font-weight'] : $default_options['font-weight'];
-		$output['font-color'] = isset( $input['font-color'] ) ? str_replace( '#', '', $input['font-color'] ) : '';
+		$output['label']            = isset( $input['label'] ) ? $input['label'] : '';
+		$output['font-size']        = isset( $input['font-size'] ) && is_numeric( $input['font-size'] ) && $input['font-size'] >= 0 ? $input['font-size'] : $default_options['font-size'];
+		$output['font-weight']      = isset( $input['font-weight'] ) && is_numeric( $input['font-weight'] ) && $input['font-weight'] >= 100 && $input['font-weight'] <= 900 ? $input['font-weight'] : $default_options['font-weight'];
+		$output['font-color']       = isset( $input['font-color'] ) ? str_replace( '#', '', $input['font-color'] ) : '';
 		$output['font-hover-color'] = isset( $input['font-hover-color'] ) ? str_replace( '#', '', $input['font-hover-color'] ) : '';
 
 		$output['custom-css'] = isset( $input['custom-css'] ) ? $input['custom-css'] : '';
@@ -383,6 +412,7 @@ class Back_to_the_Top {
 		wp_enqueue_script( 'jquery-easing', '//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js', array( 'jquery' ), '2015-02-25', true );
 		wp_enqueue_script( 'jquery-backtothetop', plugins_url() . '/back-to-the-top/jquery.backtothetop.min.js', array( 'jquery' ), '2017-07-22', true );
 	}
+
 	public function enqueue_styles() {
 		wp_enqueue_style( 'dashicons' );
 		wp_enqueue_style( 'font-awesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css', false, '2015-05-12' );
@@ -401,7 +431,7 @@ class Back_to_the_Top {
 	public function add_html() {
 		$options = $this->get_options();
 
-		$html = '<a href="#" id="backtothetop-fixed"';
+		$html  = '<a href="#" id="backtothetop-fixed"';
 		$html .= isset( $options['duration'] ) ? ' data-backtothetop-duration="' . esc_attr( $options['duration'] ) . '"' : '';
 		$html .= isset( $options['easing'] ) ? ' data-backtothetop-easing="' . esc_attr( $options['easing'] ) . '"' : '';
 		$html .= isset( $options['offset'] ) ? ' data-backtothetop-offset="' . esc_attr( $options['offset'] ) . '"' : '';
@@ -426,7 +456,7 @@ class Back_to_the_Top {
 	public function add_css() {
 		$options = $this->get_options();
 
-		$css = '<style>';
+		$css  = '<style>';
 		$css .= 'a#backtothetop-fixed {';
 		$css .= 'display: block;';
 		$css .= isset( $options['font-size'] ) ? 'font-size: ' . esc_html( $options['font-size'] ) . '%;' : '';
@@ -466,4 +496,4 @@ class Back_to_the_Top {
 
 }
 
-$backtothetop = new Back_to_the_Top;
+$backtothetop = new Back_to_the_Top();
