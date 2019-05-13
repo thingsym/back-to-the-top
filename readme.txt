@@ -7,7 +7,7 @@ Tags: To top, Scroll top, Back to the Top
 Requires at least: 4.0
 Requires PHP: 5.3
 Tested up to: 5.2.0
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPL2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,11 @@ a#backtothetop-fixed:hover {
 `
 
 == Changelog ==
+
+= 1.0.5 =
+* fix indent and reformat with phpcs and phpcbf
+* add composer.json for test
+* add static code analysis config
 
 = 1.0.4 =
 * change Requires at least from 3.4 to 4.0
