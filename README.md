@@ -62,6 +62,10 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+* Version 1.0.5
+	* fix indent and reformat with phpcs and phpcbf
+	* add composer.json for test
+	* add static code analysis config
 * Version 1.0.4
 	* change Requires at least from 3.4 to 4.0
 	* improve CI environment
@@ -78,6 +82,11 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 	* added: add PHPUnit and tests
 * Version 1.0.0
 	* initial release
+
+## Upgrade Notice
+
+* 1.0.4
+	* Requires at least version 4.0 of the WordPress
 
 ## License
 
