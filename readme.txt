@@ -5,7 +5,7 @@ Donate link:
 Link: https://github.com/thingsym/back-to-the-top
 Tags: To top, Scroll top, Back to the Top
 Stable tag: 1.0.5
-Tested up to: 5.4.2
+Tested up to: 5.6
 Requires at least: 4.0
 Requires PHP: 5.3
 License: GPL2 or later
