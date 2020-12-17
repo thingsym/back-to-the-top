@@ -25,6 +25,19 @@ Back to the Top is also a jQuery plugin. [Back to the Top Project Page here.](ht
 * Selectable the effects easing of the scroll
 * The iconic font supported, Dashicons and Font Awesome
 
+= Test Matrix =
+
+For operation compatibility between PHP version and WordPress version, see below [Github Actions](https://github.com/thingsym/back-to-the-top/actions).
+
+= Contributing =
+
+= Patches and Bug Fixes =
+
+Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
+
+* [back-to-the-top - GitHub](https://github.com/thingsym/back-to-the-top)
+* [Back to the Top - WordPress Plugin](https://wordpress.org/plugins/back-to-the-top/)
+
 == Screenshots ==
 
 1. options page
