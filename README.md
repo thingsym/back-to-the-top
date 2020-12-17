@@ -1,6 +1,6 @@
 # Introducing Back to the Top
 
-[![Build Status](https://travis-ci.org/thingsym/back-to-the-top.svg?branch=master)](https://travis-ci.org/thingsym/back-to-the-top)
+![WordPress Plugin Unit test](https://github.com/thingsym/back-to-the-top/workflows/WordPress%20Plugin%20Unit%20test/badge.svg)
 
 Back to the Top is a WordPress plugin that return to scroll smoothly to the top of the page. You can scroll to the smooth anchor link in the page.
 
@@ -47,6 +47,10 @@ a#backtothetop-fixed:hover {
 Back to the Top is hosted on the WordPress Plugin Directory.
 
 [https://wordpress.org/plugins/back-to-the-top/](https://wordpress.org/plugins/back-to-the-top/)
+
+## Test Matrix
+
+For operation compatibility between PHP version and WordPress version, see below [Github Actions](https://github.com/thingsym/back-to-the-top/actions).
 
 ## Contribution
 

@@ -5,7 +5,7 @@ Donate link:
 Link: https://github.com/thingsym/back-to-the-top
 Tags: To top, Scroll top, Back to the Top
 Stable tag: 1.0.5
-Tested up to: 5.4.2
+Tested up to: 5.6
 Requires at least: 4.0
 Requires PHP: 5.3
 License: GPL2 or later
@@ -24,6 +24,19 @@ Back to the Top is also a jQuery plugin. [Back to the Top Project Page here.](ht
 * Customizable options in the options page
 * Selectable the effects easing of the scroll
 * The iconic font supported, Dashicons and Font Awesome
+
+= Test Matrix =
+
+For operation compatibility between PHP version and WordPress version, see below [Github Actions](https://github.com/thingsym/back-to-the-top/actions).
+
+= Contributing =
+
+= Patches and Bug Fixes =
+
+Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
+
+* [back-to-the-top - GitHub](https://github.com/thingsym/back-to-the-top)
+* [Back to the Top - WordPress Plugin](https://wordpress.org/plugins/back-to-the-top/)
 
 == Screenshots ==
 
