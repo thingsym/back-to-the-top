@@ -1,11 +1,11 @@
 === Back to the Top ===
 
 Contributors: thingsym
-Donate link:
 Link: https://github.com/thingsym/back-to-the-top
+Donate link: https://github.com/sponsors/thingsym
 Tags: To top, Scroll top, Back to the Top
 Stable tag: 1.0.5
-Tested up to: 5.6
+Tested up to: 5.8.0
 Requires at least: 4.0
 Requires PHP: 5.3
 License: GPL2 or later
