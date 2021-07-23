@@ -1,7 +1,5 @@
 # Introducing Back to the Top
 
-![WordPress Plugin Unit test](https://github.com/thingsym/back-to-the-top/workflows/WordPress%20Plugin%20Unit%20test/badge.svg)
-
 Back to the Top is a WordPress plugin that return to scroll smoothly to the top of the page. You can scroll to the smooth anchor link in the page.
 
 
