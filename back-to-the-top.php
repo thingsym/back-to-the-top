@@ -84,7 +84,7 @@ class Back_to_the_Top {
 		register_setting(
 			$this->option_group,
 			$this->option_name,
-			array( $this, 'validate' )
+			array( $this, 'validate_options' )
 		);
 	}
 
@@ -407,12 +407,15 @@ class Back_to_the_Top {
 	}
 
 	/**
-	 * Validate
+	 * Validate options.
+	 *
+	 * @access public
 	 *
 	 * @param array $input
+	 *
 	 * @return array
 	 */
-	public function validate( $input ) {
+	public function validate_options( $input ) {
 		$output = $default_options = $this->get_default_options();
 
 		$output['duration']            = isset( $input['duration'] ) && is_numeric( $input['duration'] ) && $input['duration'] >= 0 ? $input['duration'] : $default_options['duration'];
@@ -435,7 +438,7 @@ class Back_to_the_Top {
 
 		$output['custom-css'] = isset( $input['custom-css'] ) ? $input['custom-css'] : '';
 
-		return apply_filters( 'back_to_the_top_validate', $output, $input, $default_options );
+		return apply_filters( 'back_to_the_top_validate_options', $output, $input, $default_options );
 	}
 
 	public function enqueue_scripts() {
