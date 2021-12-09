@@ -12,6 +12,10 @@
  * Domain Path: /languages/
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Back_to_the_Top {
 	/**
 	 * Public variable.
