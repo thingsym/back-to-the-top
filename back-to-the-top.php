@@ -50,7 +50,7 @@ class Back_to_the_Top {
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'init', array( $this, 'init' ) );
 
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_menu', array( $this, 'add_option_page' ) );
 	}
 
@@ -76,7 +76,7 @@ class Back_to_the_Top {
 		register_uninstall_hook( __Back_to_the_Top__, array( __CLASS__, 'uninstall' ) );
 	}
 
-	public function admin_init() {
+	public function register_settings() {
 		if ( false === $this->get_options() ) {
 			add_option( $this->option_name );
 		}
