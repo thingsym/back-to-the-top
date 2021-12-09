@@ -516,4 +516,6 @@ class Back_to_the_Top {
 	}
 }
 
-$backtothetop = new Back_to_the_Top();
+if ( class_exists( 'Back_to_the_Top' ) ) {
+	new Back_to_the_Top();
+};
