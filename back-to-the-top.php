@@ -13,16 +13,37 @@
  */
 
 class Back_to_the_Top {
-	protected $option_group = 'back_to_the_top';
-	protected $option_name  = 'back_to_the_top_options';
+	/**
+	 * Public variable.
+	 *
+	 * @access public
+	 *
+	 * @var string $option_group   The group name of option
+	 */
+	public $option_group = 'back_to_the_top';
 
 	protected $page_title = 'Back to the Top';
 	protected $menu_title = 'Back to the Top';
 	protected $menu_slug  = 'backtothetop';
-	protected $capability = 'manage_options';
+	/**
+	 * Public variable.
+	 *
+	 * @access public
+	 *
+	 * @var string $option_name   option name
+	 */
+	public $option_name  = 'back_to_the_top_options';
 
 	protected $textdomain     = 'backtothetop';
 	protected $languages_path = 'back-to-the-top/languages';
+	/**
+	 * Public variable.
+	 *
+	 * @access public
+	 *
+	 * @var string $capability   types of capability
+	 */
+	public $capability = 'manage_options';
 
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
