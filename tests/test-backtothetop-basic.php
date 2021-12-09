@@ -17,6 +17,9 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 
 			$this->assertEquals( 10, has_action( 'admin_init', array( $this->Back_to_the_Top, 'register_settings' ) ) );
 			$this->assertEquals( 10, has_action( 'admin_menu', array( $this->Back_to_the_Top, 'add_option_page' ) ) );
+
+			$uninstallable_plugins = (array) get_option( 'uninstall_plugins' );
+			$this->assertEquals( array( 'Back_to_the_Top', 'uninstall' ), $uninstallable_plugins[ plugin_basename( __Back_to_the_Top__ ) ] );
     }
 
     /**
