@@ -16,6 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+define( '__Back_to_the_Top__', __FILE__ );
+
 class Back_to_the_Top {
 	/**
 	 * Public variable.
@@ -511,7 +513,7 @@ class Back_to_the_Top {
 		load_plugin_textdomain(
 			'backtothetop',
 			false,
-			dirname( plugin_basename( __FILE__ ) ) . '/languages'
+			dirname( plugin_basename( __Back_to_the_Top__ ) ) . '/languages'
 		);
 	}
 }
