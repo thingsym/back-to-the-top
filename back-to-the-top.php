@@ -22,9 +22,6 @@ class Back_to_the_Top {
 	 */
 	public $option_group = 'back_to_the_top';
 
-	protected $page_title = 'Back to the Top';
-	protected $menu_title = 'Back to the Top';
-	protected $menu_slug  = 'backtothetop';
 	/**
 	 * Public variable.
 	 *
@@ -84,10 +81,10 @@ class Back_to_the_Top {
 		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
 
 		$page_hook = add_theme_page(
-			__( $this->page_title, $this->textdomain ),
-			__( $this->menu_title, $this->textdomain ),
+			__( 'Back to the Top', 'backtothetop' ),
+			__( 'Back to the Top', 'backtothetop' ),
 			$this->option_page_capability(),
-			$this->menu_slug,
+			'backtothetop',
 			array( $this, 'render_option_page' )
 		);
 
