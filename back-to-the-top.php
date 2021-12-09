@@ -49,15 +49,29 @@ class Back_to_the_Top {
 
 	public function __construct() {
 		add_action( 'init', array( $this, 'load_textdomain' ) );
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_filter( 'option_page_capability_' . $this->option_group, array( $this, 'option_page_capability' ) );
-		add_action( 'admin_menu', array( $this, 'add_option_page' ) );
+		add_action( 'init', array( $this, 'init' ) );
 
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'admin_menu', array( $this, 'add_option_page' ) );
+	}
+
+	/**
+	 * Initialize.
+	 *
+	 * Hooks to init
+	 *
+	 * @access public
+	 *
+	 * @since 1.2.0
+	 */
+	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'wp_footer', array( $this, 'add_backtothetop' ) );
 
-		register_uninstall_hook( __FILE__, array( __CLASS__, 'uninstall' ) );
+		add_filter( 'option_page_capability_' . $this->option_group, array( $this, 'option_page_capability' ) );
+
+		register_uninstall_hook( __Back_to_the_Top__, array( __CLASS__, 'uninstall' ) );
 	}
 
 	public function admin_init() {
