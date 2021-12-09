@@ -12,27 +12,43 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
      * @group basic
      */
     function construct() {
-        $this->assertEquals( 10, has_action( 'admin_init', array( $this->Back_to_the_Top, 'admin_init' ) ) );
-        $this->assertEquals( 10, has_filter( 'option_page_capability_back_to_the_top', array( $this->Back_to_the_Top, 'option_page_capability' ) ) );
-        $this->assertEquals( 10, has_action( 'admin_menu', array( $this->Back_to_the_Top, 'add_option_page' ) ) );
-        $this->assertEquals( 10, has_action( 'wp_enqueue_scripts', array( $this->Back_to_the_Top, 'enqueue_scripts' ) ) );
-        $this->assertEquals( 10, has_action( 'wp_enqueue_scripts', array( $this->Back_to_the_Top, 'enqueue_styles' ) ) );
-        $this->assertEquals( 10, has_action( 'wp_footer', array( $this->Back_to_the_Top, 'add_backtothetop' ) ) );
+			$this->assertEquals( 10, has_filter( 'init', array( $this->Back_to_the_Top, 'load_textdomain' ) ) );
+			$this->assertEquals( 10, has_filter( 'init', array( $this->Back_to_the_Top, 'init' ) ) );
 
-        // $uninstall_plugins = get_option( 'uninstall_plugins' );
-        // foreach( $uninstall_plugins as $path => $val ) {
-        //    $this->assertContains( 'Back_to_the_Top', $uninstall_plugins[$path] );
-        //    $this->assertContains( 'uninstall', $uninstall_plugins[$path] );
-        // }
-
+			$this->assertEquals( 10, has_action( 'admin_init', array( $this->Back_to_the_Top, 'register_settings' ) ) );
+			$this->assertEquals( 10, has_action( 'admin_menu', array( $this->Back_to_the_Top, 'add_option_page' ) ) );
     }
 
     /**
      * @test
      * @group basic
      */
-    function admin_init() {
-        $this->markTestIncomplete( 'This test has not been implemented yet.' );
+    function init() {
+			$this->Back_to_the_Top->init();
+
+			$this->assertEquals( 10, has_action( 'wp_enqueue_scripts', array( $this->Back_to_the_Top, 'enqueue_scripts' ) ) );
+			$this->assertEquals( 10, has_action( 'wp_enqueue_scripts', array( $this->Back_to_the_Top, 'enqueue_styles' ) ) );
+			$this->assertEquals( 10, has_action( 'wp_footer', array( $this->Back_to_the_Top, 'add_backtothetop' ) ) );
+
+			$this->assertEquals( 10, has_filter( 'option_page_capability_back_to_the_top', array( $this->Back_to_the_Top, 'option_page_capability' ) ) );
+
+			$this->assertEquals( 10, has_filter( 'plugin_action_links_' . plugin_basename( __Back_to_the_Top__ ), array( $this->Back_to_the_Top, 'plugin_action_links' ) ) );
+			$this->assertEquals( 10, has_action( 'plugin_row_meta', array( $this->Back_to_the_Top, 'plugin_metadata_links' ) ) );
+		}
+
+    /**
+     * @test
+     * @group basic
+     */
+    function register_settings() {
+			$this->Back_to_the_Top->register_settings();
+
+			global $wp_registered_settings;
+
+			$this->assertTrue( isset( $wp_registered_settings['back_to_the_top_options'] ) );
+			$this->assertEquals( 'back_to_the_top', $wp_registered_settings['back_to_the_top_options']['group'] );
+			$this->assertTrue( in_array( $this->Back_to_the_Top, $wp_registered_settings['back_to_the_top_options']['sanitize_callback'] ) );
+			$this->assertTrue( in_array( 'validate_options', $wp_registered_settings['back_to_the_top_options']['sanitize_callback'] ) );
     }
 
     /**
@@ -56,7 +72,10 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
      * @group basic
      */
     function page_hook_suffix() {
-        $this->markTestIncomplete( 'This test has not been implemented yet.' );
+			$this->Back_to_the_Top->page_hook_suffix();
+
+			$this->assertEquals( 10, has_action( 'admin_enqueue_scripts', array( $this->Back_to_the_Top, 'admin_enqueue_scripts' ) ) );
+			$this->assertEquals( 10, has_action( 'admin_enqueue_scripts', array( $this->Back_to_the_Top, 'admin_enqueue_styles' ) ) );
     }
 
     /**
@@ -86,7 +105,8 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
      * @group basic
      */
     function plugin_action_links() {
-        $this->markTestIncomplete( 'This test has not been implemented yet.' );
+			$links = $this->Back_to_the_Top->plugin_action_links( array() );
+			$this->assertContains( '<a href="themes.php?page=backtothetop">Settings</a>', $links );
     }
 
     /**

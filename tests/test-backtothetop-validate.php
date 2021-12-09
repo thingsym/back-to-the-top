@@ -14,7 +14,7 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
     function validate_case_none_input() {
         $input = array();
 
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( $validate['duration'], 400 );
         $this->assertEquals( $validate['easing'], 'swing' );
@@ -44,21 +44,21 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'duration' => 500,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 500, $validate['duration'] );
 
         $input = array(
             'duration' => -1,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 400, $validate['duration'] );
 
         $input = array(
             'duration' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 400, $validate['duration'] );
 
@@ -75,7 +75,7 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
             $input = array(
                 'easing' => $easing,
             );
-            $validate = $this->Back_to_the_Top->validate( $input );
+            $validate = $this->Back_to_the_Top->validate_options( $input );
 
             $this->assertEquals( $easing, $validate['easing'] );
         }
@@ -83,7 +83,7 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'easing' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
         $this->assertEquals( 'swing', $validate['easing'] );
 
     }
@@ -96,21 +96,21 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'offset' => 500,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 500, $validate['offset'] );
 
         $input = array(
             'offset' => -1,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( -1, $validate['offset'] );
 
         $input = array(
             'offset' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 0, $validate['offset'] );
 
@@ -124,21 +124,21 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'fixed-scroll-offset' => 500,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 500, $validate['fixed-scroll-offset'] );
 
         $input = array(
             'fixed-scroll-offset' => -500,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 0, $validate['fixed-scroll-offset'] );
 
         $input = array(
             'fixed-scroll-offset' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 0, $validate['fixed-scroll-offset'] );
 
@@ -152,21 +152,21 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'fixed-fadeIn' => 500,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 500, $validate['fixed-fadeIn'] );
 
         $input = array(
             'fixed-fadeIn' => -1,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 800, $validate['fixed-fadeIn'] );
 
         $input = array(
             'fixed-fadeIn' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 800, $validate['fixed-fadeIn'] );
 
@@ -180,21 +180,21 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'fixed-fadeOut' => 500,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 500, $validate['fixed-fadeOut'] );
 
         $input = array(
             'fixed-fadeOut' => -1,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 800, $validate['fixed-fadeOut'] );
 
         $input = array(
             'fixed-fadeOut' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 800, $validate['fixed-fadeOut'] );
 
@@ -211,7 +211,7 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
             $input = array(
                 'fixed-display' => $display,
             );
-            $validate = $this->Back_to_the_Top->validate( $input );
+            $validate = $this->Back_to_the_Top->validate_options( $input );
 
             $this->assertEquals( $display, $validate['fixed-display'] );
         }
@@ -219,7 +219,7 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'fixed-display' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
         $this->assertEquals( 'bottom-right', $validate['fixed-display'] );
 
     }
@@ -232,21 +232,21 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'fixed-top' => 500,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 500, $validate['fixed-top'] );
 
         $input = array(
             'fixed-top' => -1,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 0, $validate['fixed-top'] );
 
         $input = array(
             'fixed-top' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 0, $validate['fixed-top'] );
 
@@ -260,21 +260,21 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'fixed-bottom' => 500,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 500, $validate['fixed-bottom'] );
 
         $input = array(
             'fixed-bottom' => -1,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 0, $validate['fixed-bottom'] );
 
         $input = array(
             'fixed-bottom' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 0, $validate['fixed-bottom'] );
 
@@ -288,21 +288,21 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'fixed-left' => 500,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 500, $validate['fixed-left'] );
 
         $input = array(
             'fixed-left' => -1,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 0, $validate['fixed-left'] );
 
         $input = array(
             'fixed-left' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 0, $validate['fixed-left'] );
 
@@ -316,21 +316,21 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'fixed-right' => 500,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 500, $validate['fixed-right'] );
 
         $input = array(
             'fixed-right' => -1,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 0, $validate['fixed-right'] );
 
         $input = array(
             'fixed-right' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 0, $validate['fixed-right'] );
 
@@ -344,21 +344,21 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'font-size' => 500,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 500, $validate['font-size'] );
 
         $input = array(
             'font-size' => -1,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 140, $validate['font-size'] );
 
         $input = array(
             'font-size' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 140, $validate['font-size'] );
 
@@ -372,35 +372,35 @@ class BackToTheTop_Validate_Test extends WP_UnitTestCase {
         $input = array(
             'font-weight' => 900,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 900, $validate['font-weight'] );
 
         $input = array(
             'font-weight' => 140,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 140, $validate['font-weight'] );
 
         $input = array(
             'font-weight' => 901,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 400, $validate['font-weight'] );
 
         $input = array(
             'font-weight' => 99,
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 400, $validate['font-weight'] );
 
         $input = array(
             'font-weight' => 'asdf',
         );
-        $validate = $this->Back_to_the_Top->validate( $input );
+        $validate = $this->Back_to_the_Top->validate_options( $input );
 
         $this->assertEquals( 400, $validate['font-weight'] );
 
