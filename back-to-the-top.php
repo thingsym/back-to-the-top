@@ -32,7 +32,6 @@ class Back_to_the_Top {
 	public $option_name  = 'back_to_the_top_options';
 
 	protected $textdomain     = 'backtothetop';
-	protected $languages_path = 'back-to-the-top/languages';
 	/**
 	 * Public variable.
 	 *
@@ -43,6 +42,7 @@ class Back_to_the_Top {
 	public $capability = 'manage_options';
 
 	public function __construct() {
+		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_filter( 'option_page_capability_' . $this->option_group, array( $this, 'option_page_capability' ) );
 		add_action( 'admin_menu', array( $this, 'add_option_page' ) );
@@ -76,7 +76,6 @@ class Back_to_the_Top {
 	}
 
 	public function add_option_page() {
-		load_plugin_textdomain( $this->textdomain, false, $this->languages_path );
 
 		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
 
@@ -495,6 +494,22 @@ class Back_to_the_Top {
 		return $css;
 	}
 
+	/**
+	 * Load textdomain
+	 *
+	 * @access public
+	 *
+	 * @return void
+	 *
+	 * @since 1.1.0
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain(
+			'backtothetop',
+			false,
+			dirname( plugin_basename( __FILE__ ) ) . '/languages'
+		);
+	}
 }
 
 $backtothetop = new Back_to_the_Top();
