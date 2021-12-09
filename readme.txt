@@ -4,7 +4,7 @@ Contributors: thingsym
 Link: https://github.com/thingsym/back-to-the-top
 Donate link: https://github.com/sponsors/thingsym
 Tags: To top, Scroll top, Back to the Top
-Stable tag: 1.0.5
+Stable tag: 1.1.0
 Tested up to: 5.8.0
 Requires at least: 4.0
 Requires PHP: 5.3
@@ -67,6 +67,32 @@ a#backtothetop-fixed:hover {
 `
 
 == Changelog ==
+
+= 1.1.0 =
+* add composer scripts
+* update japanese translation
+* update pot
+* update composer dependencies
+* add test case
+* change method name from admin_init to register_settings
+* change method name from validate to validate_options
+* fix textdomain
+* add plugin_metadata_links method
+* change add_filter to plugin_action_links_**
+* add init method
+* add Constants
+* add checking Back_to_the_Top class
+* add checking ABSPATH
+* add load_textdomain method
+* remove protected variable
+* change from protected variable to public variable for unit test
+* update composer.json
+* add timeout-minutes to workflows
+* add phpunit-polyfills
+* update wordpress-test-matrix
+* add sponsor link
+* add FUNDING.yml
+* add GitHub actions for CI/CD, remove .travis.yml
 
 = 1.0.5 =
 * fix indent and reformat with phpcs and phpcbf
