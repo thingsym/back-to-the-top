@@ -64,6 +64,31 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+* Version 1.1.0
+	* add composer scripts
+	* update japanese translation
+	* update pot
+	* update composer dependencies
+	* add test case
+	* change method name from admin_init to register_settings
+	* change method name from validate to validate_options
+	* fix textdomain
+	* add plugin_metadata_links method
+	* change add_filter to plugin_action_links_**
+	* add init method
+	* add Constants
+	* add checking Back_to_the_Top class
+	* add checking ABSPATH
+	* add load_textdomain method
+	* remove protected variable
+	* change from protected variable to public variable for unit test
+	* update composer.json
+	* add timeout-minutes to workflows
+	* add phpunit-polyfills
+	* update wordpress-test-matrix
+	* add sponsor link
+	* add FUNDING.yml
+	* add GitHub actions for CI/CD, remove .travis.yml
 * Version 1.0.5
 	* fix indent and reformat with phpcs and phpcbf
 	* add composer.json for test
