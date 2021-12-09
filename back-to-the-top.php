@@ -71,6 +71,7 @@ class Back_to_the_Top {
 
 		add_filter( 'option_page_capability_' . $this->option_group, array( $this, 'option_page_capability' ) );
 
+		add_filter( 'plugin_row_meta', array( $this, 'plugin_metadata_links' ), 10, 2 );
 		add_filter( 'plugin_action_links_' . plugin_basename( __Back_to_the_Top__ ), array( $this, 'plugin_action_links' ) );
 
 		register_uninstall_hook( __Back_to_the_Top__, array( __CLASS__, 'uninstall' ) );
@@ -539,6 +540,30 @@ class Back_to_the_Top {
 			false,
 			dirname( plugin_basename( __Back_to_the_Top__ ) ) . '/languages'
 		);
+	}
+
+	/**
+	 * Set links below a plugin on the Plugins page.
+	 *
+	 * Hooks to plugin_row_meta
+	 *
+	 * @see https://developer.wordpress.org/reference/hooks/plugin_row_meta/
+	 *
+	 * @access public
+	 *
+	 * @param array  $links  An array of the plugin's metadata.
+	 * @param string $file   Path to the plugin file relative to the plugins directory.
+	 *
+	 * @return array $links
+	 *
+	 * @since 1.2.0
+	 */
+	public function plugin_metadata_links( $links, $file ) {
+		if ( $file == plugin_basename( __Back_to_the_Top__ ) ) {
+			$links[] = '<a href="https://github.com/sponsors/thingsym">' . __( 'Become a sponsor', 'backtothetop' ) . '</a>';
+		}
+
+		return $links;
 	}
 }
 
