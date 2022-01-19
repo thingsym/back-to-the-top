@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Back to the Top package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Back to the Top 1.1.0\n"
+"Project-Id-Version: Back to the Top 1.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/back-to-the-top\n"
 "POT-Creation-Date: 2021-12-09 09:54:40+00:00\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#. #-#-#-#-#  backtothetop.pot (Back to the Top 1.1.0)  #-#-#-#-#
+#. #-#-#-#-#  backtothetop.pot (Back to the Top 1.1.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: back-to-the-top.php:102 back-to-the-top.php:103 back-to-the-top.php:197
 msgid "Back to the Top"
