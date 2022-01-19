@@ -11,6 +11,16 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 	 * @test
 	 * @group basic
 	 */
+	function public_variable() {
+		$this->assertEquals( 'back_to_the_top', $this->Back_to_the_Top->option_group );
+		$this->assertEquals( 'back_to_the_top_options', $this->Back_to_the_Top->option_name );
+		$this->assertEquals( 'manage_options', $this->Back_to_the_Top->capability );
+	}
+
+	/**
+	 * @test
+	 * @group basic
+	 */
 	function construct() {
 		$this->assertEquals( 10, has_filter( 'init', array( $this->Back_to_the_Top, 'load_textdomain' ) ) );
 		$this->assertEquals( 10, has_filter( 'init', array( $this->Back_to_the_Top, 'init' ) ) );
