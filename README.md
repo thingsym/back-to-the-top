@@ -64,6 +64,14 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+* Version 1.1.1
+	* update wp-plugin-unit-test.yml
+	* bump up yoast/phpunit-polyfills version
+	* change os to ubuntu-20.04 for ci
+	* add Upgrade Notice
+	* change requires at least to wordpress 4.9
+	* change requires to PHP 5.6
+	* add test case
 * Version 1.1.0
 	* add composer scripts
 	* update japanese translation
