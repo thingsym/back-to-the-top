@@ -122,5 +122,9 @@ a#backtothetop-fixed:hover {
 
 == Upgrade Notice ==
 
+= 1.1.1 =
+* Requires at least version 4.9 of the WordPress
+* Requires PHP version 5.6
+
 = 1.0.4 =
 * Requires at least version 4.0 of the WordPress
