@@ -4,7 +4,7 @@ class BackToTheTop_Option_Test extends WP_UnitTestCase {
 
 	public function setUp() {
 		parent::setUp();
-		$this->Back_to_the_Top = new Back_to_the_Top();
+		$this->Back_To_The_Top = new Back_to_the_Top();
 	}
 
 	/**
@@ -12,25 +12,25 @@ class BackToTheTop_Option_Test extends WP_UnitTestCase {
 	 * @group option
 	 */
 	function get_default_options() {
-		$options = $this->Back_to_the_Top->get_default_options();
+		$options = $this->Back_To_The_Top->get_default_options();
 
-		$this->assertEquals( $options['duration'], 400 );
-		$this->assertEquals( $options['easing'], 'swing' );
-		$this->assertEquals( $options['offset'], 0 );
-		$this->assertEquals( $options['fixed-scroll-offset'], 0 );
-		$this->assertEquals( $options['fixed-fadeIn'], 800 );
-		$this->assertEquals( $options['fixed-fadeOut'], 800 );
-		$this->assertEquals( $options['fixed-display'], 'bottom-right' );
-		$this->assertEquals( $options['fixed-top'], 0 );
-		$this->assertEquals( $options['fixed-bottom'], 0 );
-		$this->assertEquals( $options['fixed-left'], 0 );
-		$this->assertEquals( $options['fixed-right'], 0 );
-		$this->assertEquals( $options['label'], '<i class="dashicons dashicons-arrow-up-alt2"></i><br>Back to the Top' );
-		$this->assertEquals( $options['font-size'], 140 );
-		$this->assertEquals( $options['font-weight'], 400 );
-		$this->assertEquals( $options['font-color'], 'f00' );
-		$this->assertEquals( $options['font-hover-color'], 'f00' );
-		$this->assertEquals( $options['custom-css'], '' );
+		$this->assertSame( $options['duration'], 400 );
+		$this->assertSame( $options['easing'], 'swing' );
+		$this->assertSame( $options['offset'], 0 );
+		$this->assertSame( $options['fixed-scroll-offset'], 0 );
+		$this->assertSame( $options['fixed-fadeIn'], 800 );
+		$this->assertSame( $options['fixed-fadeOut'], 800 );
+		$this->assertSame( $options['fixed-display'], 'bottom-right' );
+		$this->assertSame( $options['fixed-top'], 0 );
+		$this->assertSame( $options['fixed-bottom'], 0 );
+		$this->assertSame( $options['fixed-left'], 0 );
+		$this->assertSame( $options['fixed-right'], 0 );
+		$this->assertSame( $options['label'], '<i class="dashicons dashicons-arrow-up-alt2"></i><br>Back to the Top' );
+		$this->assertSame( $options['font-size'], 140 );
+		$this->assertSame( $options['font-weight'], 400 );
+		$this->assertSame( $options['font-color'], 'f00' );
+		$this->assertSame( $options['font-hover-color'], 'f00' );
+		$this->assertSame( $options['custom-css'], '' );
 	}
 
 	/**
@@ -38,7 +38,7 @@ class BackToTheTop_Option_Test extends WP_UnitTestCase {
 	 * @group option
 	 */
 	function uninstall() {
-		$this->Back_to_the_Top->uninstall();
+		$this->Back_To_The_Top->uninstall();
 		$this->assertFalse( get_option( 'back_to_the_top_options' ) );
 	}
 
@@ -47,25 +47,25 @@ class BackToTheTop_Option_Test extends WP_UnitTestCase {
 	 * @group option
 	 */
 	function options() {
-		$options = $this->Back_to_the_Top->get_options();
+		$options = $this->Back_To_The_Top->get_options();
 
-		$this->assertEquals( $options['duration'], 400 );
-		$this->assertEquals( $options['easing'], 'swing' );
-		$this->assertEquals( $options['offset'], 0 );
-		$this->assertEquals( $options['fixed-scroll-offset'], 0 );
-		$this->assertEquals( $options['fixed-fadeIn'], 800 );
-		$this->assertEquals( $options['fixed-fadeOut'], 800 );
-		$this->assertEquals( $options['fixed-display'], 'bottom-right' );
-		$this->assertEquals( $options['fixed-top'], 0 );
-		$this->assertEquals( $options['fixed-bottom'], 0 );
-		$this->assertEquals( $options['fixed-left'], 0 );
-		$this->assertEquals( $options['fixed-right'], 0 );
-		$this->assertEquals( $options['label'], '<i class="dashicons dashicons-arrow-up-alt2"></i><br>Back to the Top' );
-		$this->assertEquals( $options['font-size'], 140 );
-		$this->assertEquals( $options['font-weight'], 400 );
-		$this->assertEquals( $options['font-color'], 'f00' );
-		$this->assertEquals( $options['font-hover-color'], 'f00' );
-		$this->assertEquals( $options['custom-css'], '' );
+		$this->assertSame( $options['duration'], 400 );
+		$this->assertSame( $options['easing'], 'swing' );
+		$this->assertSame( $options['offset'], 0 );
+		$this->assertSame( $options['fixed-scroll-offset'], 0 );
+		$this->assertSame( $options['fixed-fadeIn'], 800 );
+		$this->assertSame( $options['fixed-fadeOut'], 800 );
+		$this->assertSame( $options['fixed-display'], 'bottom-right' );
+		$this->assertSame( $options['fixed-top'], 0 );
+		$this->assertSame( $options['fixed-bottom'], 0 );
+		$this->assertSame( $options['fixed-left'], 0 );
+		$this->assertSame( $options['fixed-right'], 0 );
+		$this->assertSame( $options['label'], '<i class="dashicons dashicons-arrow-up-alt2"></i><br>Back to the Top' );
+		$this->assertSame( $options['font-size'], 140 );
+		$this->assertSame( $options['font-weight'], 400 );
+		$this->assertSame( $options['font-color'], 'f00' );
+		$this->assertSame( $options['font-hover-color'], 'f00' );
+		$this->assertSame( $options['custom-css'], '' );
 	}
 
 	/**
@@ -76,25 +76,25 @@ class BackToTheTop_Option_Test extends WP_UnitTestCase {
 		$options = array();
 		update_option( 'back_to_the_top_options', $options );
 
-		$options = $this->Back_to_the_Top->get_options();
+		$options = $this->Back_To_The_Top->get_options();
 
-		$this->assertEquals( $options['duration'], 400 );
-		$this->assertEquals( $options['easing'], 'swing' );
-		$this->assertEquals( $options['offset'], 0 );
-		$this->assertEquals( $options['fixed-scroll-offset'], 0 );
-		$this->assertEquals( $options['fixed-fadeIn'], 800 );
-		$this->assertEquals( $options['fixed-fadeOut'], 800 );
-		$this->assertEquals( $options['fixed-display'], 'bottom-right' );
-		$this->assertEquals( $options['fixed-top'], 0 );
-		$this->assertEquals( $options['fixed-bottom'], 0 );
-		$this->assertEquals( $options['fixed-left'], 0 );
-		$this->assertEquals( $options['fixed-right'], 0 );
-		$this->assertEquals( $options['label'], '<i class="dashicons dashicons-arrow-up-alt2"></i><br>Back to the Top' );
-		$this->assertEquals( $options['font-size'], 140 );
-		$this->assertEquals( $options['font-weight'], 400 );
-		$this->assertEquals( $options['font-color'], 'f00' );
-		$this->assertEquals( $options['font-hover-color'], 'f00' );
-		$this->assertEquals( $options['custom-css'], '' );
+		$this->assertSame( $options['duration'], 400 );
+		$this->assertSame( $options['easing'], 'swing' );
+		$this->assertSame( $options['offset'], 0 );
+		$this->assertSame( $options['fixed-scroll-offset'], 0 );
+		$this->assertSame( $options['fixed-fadeIn'], 800 );
+		$this->assertSame( $options['fixed-fadeOut'], 800 );
+		$this->assertSame( $options['fixed-display'], 'bottom-right' );
+		$this->assertSame( $options['fixed-top'], 0 );
+		$this->assertSame( $options['fixed-bottom'], 0 );
+		$this->assertSame( $options['fixed-left'], 0 );
+		$this->assertSame( $options['fixed-right'], 0 );
+		$this->assertSame( $options['label'], '<i class="dashicons dashicons-arrow-up-alt2"></i><br>Back to the Top' );
+		$this->assertSame( $options['font-size'], 140 );
+		$this->assertSame( $options['font-weight'], 400 );
+		$this->assertSame( $options['font-color'], 'f00' );
+		$this->assertSame( $options['font-hover-color'], 'f00' );
+		$this->assertSame( $options['custom-css'], '' );
 	}
 
 }

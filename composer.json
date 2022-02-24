@@ -30,7 +30,6 @@
       "@phpmd",
       "@phpstan"
     ],
-    "makepot:php": "php /usr/local/share/wp-i18n/makepot.php wp-plugin ../back-to-the-top ../back-to-the-top/languages/backtothetop.pot",
     "makepot:wpcli": "wp i18n make-pot ./ ./languages/backtothetop.pot --exclude=dist,bin,tests,node_modules,vendor",
     "msgfmt:ja": "msgfmt languages/backtothetop-ja.po -o languages/backtothetop-ja.mo"
   }
