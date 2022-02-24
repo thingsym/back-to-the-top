@@ -4,7 +4,7 @@ Contributors: thingsym
 Link: https://github.com/thingsym/back-to-the-top
 Donate link: https://github.com/sponsors/thingsym
 Tags: To top, Scroll top, Back to the Top
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 Tested up to: 5.9.0
 Requires at least: 4.9
 Requires PHP: 5.6
@@ -67,6 +67,20 @@ a#backtothetop-fixed:hover {
 `
 
 == Changelog ==
+
+= 1.2.0 =
+* fix phpcs.ruleset.xml
+* fix multiple assignments
+* declare uninstall method as public method
+* separate the file structure for class file
+* add @package tag
+* fix class name according to naming convention
+* fix constants to uppercase
+* update japanese translation
+* update pot
+* change makepot from php script to wp cli
+* change plugin initialization to plugins_loaded hook
+* replace assert from assertEquals to assertSame
 
 = 1.1.1 =
 * update wp-plugin-unit-test.yml
