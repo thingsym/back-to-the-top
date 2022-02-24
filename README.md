@@ -64,6 +64,19 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+* Version 1.2.0
+	* fix phpcs.ruleset.xml
+	* fix multiple assignments
+	* declare uninstall method as public method
+	* separate the file structure for class file
+	* add @package tag
+	* fix class name according to naming convention
+	* fix constants to uppercase
+	* update japanese translation
+	* update pot
+	* change makepot from php script to wp cli
+	* change plugin initialization to plugins_loaded hook
+	* replace assert from assertEquals to assertSame
 * Version 1.1.1
 	* update wp-plugin-unit-test.yml
 	* bump up yoast/phpunit-polyfills version
