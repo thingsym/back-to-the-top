@@ -411,7 +411,8 @@ class Back_To_The_Top {
 	 * @return array
 	 */
 	public function validate_options( $input ) {
-		$output = $default_options = $this->get_default_options();
+		$output          = $this->get_default_options();
+		$default_options = $this->get_default_options();
 
 		$output['duration']            = isset( $input['duration'] ) && is_numeric( $input['duration'] ) && $input['duration'] >= 0 ? $input['duration'] : $default_options['duration'];
 		$output['easing']              = isset( $input['easing'] ) && in_array( $input['easing'], $this->get_easings() ) ? $input['easing'] : $default_options['easing'];
@@ -433,7 +434,7 @@ class Back_To_The_Top {
 
 		$output['custom-css'] = isset( $input['custom-css'] ) ? $input['custom-css'] : '';
 
-		return apply_filters( 'back_to_the_top_validate_options', $output, $input, $default_options );
+		return apply_filters( 'back_to_the_top_validate_options', $output, $input, $this->get_default_options() );
 	}
 
 	public function enqueue_scripts() {
