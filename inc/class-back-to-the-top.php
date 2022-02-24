@@ -82,7 +82,7 @@ class Back_To_The_Top {
 		);
 	}
 
-	static function uninstall() {
+	public static function uninstall() {
 		$backtothetop = new Back_to_the_Top();
 		delete_option( $backtothetop->option_name );
 	}
