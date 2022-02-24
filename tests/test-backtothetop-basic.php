@@ -12,9 +12,9 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	function public_variable() {
-		$this->assertEquals( 'back_to_the_top', $this->Back_to_the_Top->option_group );
-		$this->assertEquals( 'back_to_the_top_options', $this->Back_to_the_Top->option_name );
-		$this->assertEquals( 'manage_options', $this->Back_to_the_Top->capability );
+		$this->assertSame( 'back_to_the_top', $this->Back_to_the_Top->option_group );
+		$this->assertSame( 'back_to_the_top_options', $this->Back_to_the_Top->option_name );
+		$this->assertSame( 'manage_options', $this->Back_to_the_Top->capability );
 	}
 
 	/**
@@ -22,14 +22,14 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	function construct() {
-		$this->assertEquals( 10, has_filter( 'init', array( $this->Back_to_the_Top, 'load_textdomain' ) ) );
-		$this->assertEquals( 10, has_filter( 'init', array( $this->Back_to_the_Top, 'init' ) ) );
+		$this->assertSame( 10, has_filter( 'init', array( $this->Back_to_the_Top, 'load_textdomain' ) ) );
+		$this->assertSame( 10, has_filter( 'init', array( $this->Back_to_the_Top, 'init' ) ) );
 
-		$this->assertEquals( 10, has_action( 'admin_init', array( $this->Back_to_the_Top, 'register_settings' ) ) );
-		$this->assertEquals( 10, has_action( 'admin_menu', array( $this->Back_to_the_Top, 'add_option_page' ) ) );
+		$this->assertSame( 10, has_action( 'admin_init', array( $this->Back_to_the_Top, 'register_settings' ) ) );
+		$this->assertSame( 10, has_action( 'admin_menu', array( $this->Back_to_the_Top, 'add_option_page' ) ) );
 
 		$uninstallable_plugins = (array) get_option( 'uninstall_plugins' );
-		$this->assertEquals( array( 'Back_to_the_Top', 'uninstall' ), $uninstallable_plugins[ plugin_basename( __Back_to_the_Top__ ) ] );
+		$this->assertSame( array( 'Back_to_the_Top', 'uninstall' ), $uninstallable_plugins[ plugin_basename( __Back_to_the_Top__ ) ] );
 	}
 
 	/**
@@ -39,14 +39,14 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 	function init() {
 		$this->Back_to_the_Top->init();
 
-		$this->assertEquals( 10, has_action( 'wp_enqueue_scripts', array( $this->Back_to_the_Top, 'enqueue_scripts' ) ) );
-		$this->assertEquals( 10, has_action( 'wp_enqueue_scripts', array( $this->Back_to_the_Top, 'enqueue_styles' ) ) );
-		$this->assertEquals( 10, has_action( 'wp_footer', array( $this->Back_to_the_Top, 'add_backtothetop' ) ) );
+		$this->assertSame( 10, has_action( 'wp_enqueue_scripts', array( $this->Back_to_the_Top, 'enqueue_scripts' ) ) );
+		$this->assertSame( 10, has_action( 'wp_enqueue_scripts', array( $this->Back_to_the_Top, 'enqueue_styles' ) ) );
+		$this->assertSame( 10, has_action( 'wp_footer', array( $this->Back_to_the_Top, 'add_backtothetop' ) ) );
 
-		$this->assertEquals( 10, has_filter( 'option_page_capability_back_to_the_top', array( $this->Back_to_the_Top, 'option_page_capability' ) ) );
+		$this->assertSame( 10, has_filter( 'option_page_capability_back_to_the_top', array( $this->Back_to_the_Top, 'option_page_capability' ) ) );
 
-		$this->assertEquals( 10, has_filter( 'plugin_action_links_' . plugin_basename( __Back_to_the_Top__ ), array( $this->Back_to_the_Top, 'plugin_action_links' ) ) );
-		$this->assertEquals( 10, has_action( 'plugin_row_meta', array( $this->Back_to_the_Top, 'plugin_metadata_links' ) ) );
+		$this->assertSame( 10, has_filter( 'plugin_action_links_' . plugin_basename( __Back_to_the_Top__ ), array( $this->Back_to_the_Top, 'plugin_action_links' ) ) );
+		$this->assertSame( 10, has_action( 'plugin_row_meta', array( $this->Back_to_the_Top, 'plugin_metadata_links' ) ) );
 	}
 
 	/**
@@ -59,7 +59,7 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 		global $wp_registered_settings;
 
 		$this->assertTrue( isset( $wp_registered_settings['back_to_the_top_options'] ) );
-		$this->assertEquals( 'back_to_the_top', $wp_registered_settings['back_to_the_top_options']['group'] );
+		$this->assertSame( 'back_to_the_top', $wp_registered_settings['back_to_the_top_options']['group'] );
 		$this->assertTrue( in_array( $this->Back_to_the_Top, $wp_registered_settings['back_to_the_top_options']['sanitize_callback'] ) );
 		$this->assertTrue( in_array( 'validate_options', $wp_registered_settings['back_to_the_top_options']['sanitize_callback'] ) );
 	}
@@ -69,7 +69,7 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	function option_page_capability() {
-		$this->assertEquals( 'manage_options', $this->Back_to_the_Top->option_page_capability() );
+		$this->assertSame( 'manage_options', $this->Back_to_the_Top->option_page_capability() );
 	}
 
 	/**
@@ -87,8 +87,8 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 	function page_hook_suffix() {
 		$this->Back_to_the_Top->page_hook_suffix();
 
-		$this->assertEquals( 10, has_action( 'admin_enqueue_scripts', array( $this->Back_to_the_Top, 'admin_enqueue_scripts' ) ) );
-		$this->assertEquals( 10, has_action( 'admin_enqueue_scripts', array( $this->Back_to_the_Top, 'admin_enqueue_styles' ) ) );
+		$this->assertSame( 10, has_action( 'admin_enqueue_scripts', array( $this->Back_to_the_Top, 'admin_enqueue_scripts' ) ) );
+		$this->assertSame( 10, has_action( 'admin_enqueue_scripts', array( $this->Back_to_the_Top, 'admin_enqueue_styles' ) ) );
 	}
 
 	/**
