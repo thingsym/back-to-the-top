@@ -29,7 +29,7 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 		$this->assertSame( 10, has_action( 'admin_menu', array( $this->Back_to_the_Top, 'add_option_page' ) ) );
 
 		$uninstallable_plugins = (array) get_option( 'uninstall_plugins' );
-		$this->assertSame( array( 'Back_to_the_Top', 'uninstall' ), $uninstallable_plugins[ plugin_basename( __Back_to_the_Top__ ) ] );
+		$this->assertSame( array( 'Back_to_the_Top', 'uninstall' ), $uninstallable_plugins[ plugin_basename( __BACK_TO_THE_TOP__ ) ] );
 	}
 
 	/**
@@ -45,7 +45,7 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 
 		$this->assertSame( 10, has_filter( 'option_page_capability_back_to_the_top', array( $this->Back_to_the_Top, 'option_page_capability' ) ) );
 
-		$this->assertSame( 10, has_filter( 'plugin_action_links_' . plugin_basename( __Back_to_the_Top__ ), array( $this->Back_to_the_Top, 'plugin_action_links' ) ) );
+		$this->assertSame( 10, has_filter( 'plugin_action_links_' . plugin_basename( __BACK_TO_THE_TOP__ ), array( $this->Back_to_the_Top, 'plugin_action_links' ) ) );
 		$this->assertSame( 10, has_action( 'plugin_row_meta', array( $this->Back_to_the_Top, 'plugin_metadata_links' ) ) );
 	}
 

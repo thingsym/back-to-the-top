@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( '__Back_to_the_Top__', __FILE__ );
+define( '__BACK_TO_THE_TOP__', __FILE__ );
 
 class Back_to_the_Top {
 	/**
@@ -71,9 +71,9 @@ class Back_to_the_Top {
 		add_filter( 'option_page_capability_' . $this->option_group, array( $this, 'option_page_capability' ) );
 
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_metadata_links' ), 10, 2 );
-		add_filter( 'plugin_action_links_' . plugin_basename( __Back_to_the_Top__ ), array( $this, 'plugin_action_links' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( __BACK_TO_THE_TOP__ ), array( $this, 'plugin_action_links' ) );
 
-		register_uninstall_hook( __Back_to_the_Top__, array( __CLASS__, 'uninstall' ) );
+		register_uninstall_hook( __BACK_TO_THE_TOP__, array( __CLASS__, 'uninstall' ) );
 	}
 
 	public function register_settings() {
@@ -540,7 +540,7 @@ class Back_to_the_Top {
 		load_plugin_textdomain(
 			'backtothetop',
 			false,
-			dirname( plugin_basename( __Back_to_the_Top__ ) ) . '/languages'
+			dirname( plugin_basename( __BACK_TO_THE_TOP__ ) ) . '/languages'
 		);
 	}
 
@@ -561,7 +561,7 @@ class Back_to_the_Top {
 	 * @since 1.2.0
 	 */
 	public function plugin_metadata_links( $links, $file ) {
-		if ( $file == plugin_basename( __Back_to_the_Top__ ) ) {
+		if ( $file == plugin_basename( __BACK_TO_THE_TOP__ ) ) {
 			$links[] = '<a href="https://github.com/sponsors/thingsym">' . __( 'Become a sponsor', 'backtothetop' ) . '</a>';
 		}
 
