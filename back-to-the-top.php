@@ -47,8 +47,8 @@ class Back_to_the_Top {
 	public $capability = 'manage_options';
 
 	public function __construct() {
-		add_action( 'init', array( $this, 'load_textdomain' ) );
-		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+		add_action( 'plugins_loaded', array( $this, 'init' ) );
 
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_menu', array( $this, 'add_option_page' ) );
@@ -57,7 +57,7 @@ class Back_to_the_Top {
 	/**
 	 * Initialize.
 	 *
-	 * Hooks to init
+	 * Hooks to plugins_loaded
 	 *
 	 * @access public
 	 *

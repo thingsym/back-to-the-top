@@ -22,8 +22,8 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	function construct() {
-		$this->assertSame( 10, has_filter( 'init', array( $this->Back_to_the_Top, 'load_textdomain' ) ) );
-		$this->assertSame( 10, has_filter( 'init', array( $this->Back_to_the_Top, 'init' ) ) );
+		$this->assertSame( 10, has_filter( 'plugins_loaded', array( $this->Back_to_the_Top, 'load_textdomain' ) ) );
+		$this->assertSame( 10, has_filter( 'plugins_loaded', array( $this->Back_to_the_Top, 'init' ) ) );
 
 		$this->assertSame( 10, has_action( 'admin_init', array( $this->Back_to_the_Top, 'register_settings' ) ) );
 		$this->assertSame( 10, has_action( 'admin_menu', array( $this->Back_to_the_Top, 'add_option_page' ) ) );
