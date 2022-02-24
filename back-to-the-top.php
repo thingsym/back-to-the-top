@@ -10,6 +10,8 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: backtothetop
  * Domain Path: /languages/
+ *
+ * @package Back_To_The_Top
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
