@@ -4,7 +4,7 @@ class BackToTheTop_Option_Test extends WP_UnitTestCase {
 
 	public function setUp() {
 		parent::setUp();
-		$this->Back_to_the_Top = new Back_to_the_Top();
+		$this->Back_To_The_Top = new Back_to_the_Top();
 	}
 
 	/**
@@ -12,7 +12,7 @@ class BackToTheTop_Option_Test extends WP_UnitTestCase {
 	 * @group option
 	 */
 	function get_default_options() {
-		$options = $this->Back_to_the_Top->get_default_options();
+		$options = $this->Back_To_The_Top->get_default_options();
 
 		$this->assertSame( $options['duration'], 400 );
 		$this->assertSame( $options['easing'], 'swing' );
@@ -38,7 +38,7 @@ class BackToTheTop_Option_Test extends WP_UnitTestCase {
 	 * @group option
 	 */
 	function uninstall() {
-		$this->Back_to_the_Top->uninstall();
+		$this->Back_To_The_Top->uninstall();
 		$this->assertFalse( get_option( 'back_to_the_top_options' ) );
 	}
 
@@ -47,7 +47,7 @@ class BackToTheTop_Option_Test extends WP_UnitTestCase {
 	 * @group option
 	 */
 	function options() {
-		$options = $this->Back_to_the_Top->get_options();
+		$options = $this->Back_To_The_Top->get_options();
 
 		$this->assertSame( $options['duration'], 400 );
 		$this->assertSame( $options['easing'], 'swing' );
@@ -76,7 +76,7 @@ class BackToTheTop_Option_Test extends WP_UnitTestCase {
 		$options = array();
 		update_option( 'back_to_the_top_options', $options );
 
-		$options = $this->Back_to_the_Top->get_options();
+		$options = $this->Back_To_The_Top->get_options();
 
 		$this->assertSame( $options['duration'], 400 );
 		$this->assertSame( $options['easing'], 'swing' );

@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( '__BACK_TO_THE_TOP__', __FILE__ );
 
-class Back_to_the_Top {
+class Back_To_The_Top {
 	/**
 	 * Public variable.
 	 *
@@ -569,6 +569,6 @@ class Back_to_the_Top {
 	}
 }
 
-if ( class_exists( 'Back_to_the_Top' ) ) {
-	new Back_to_the_Top();
+if ( class_exists( 'Back_To_The_Top' ) ) {
+	new Back_To_The_Top();
 };
