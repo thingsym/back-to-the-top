@@ -8,7 +8,7 @@ Stable tag: 1.2.0
 Tested up to: 6.0.0
 Requires at least: 4.9
 Requires PHP: 5.6
-License: GPL2 or later
+License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Back to the Top is a WordPress plugin that return to scroll smoothly to the top of the page. You can scroll to the smooth anchor link in the page.
