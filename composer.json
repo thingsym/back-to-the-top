@@ -37,6 +37,7 @@
       "@msgfmt:ja"
     ],
     "makepot:wpcli": "wp i18n make-pot ./ ./languages/backtothetop.pot --exclude=dist,bin,tests,node_modules,vendor",
+    "msgmerge:ja": "msgmerge --update --backup off ./languages/backtothetop-ja.po ./languages/backtothetop.pot",
     "makemo:ja": "wp i18n make-mo languages/backtothetop.po languages/",
     "msgfmt:ja": "msgfmt languages/backtothetop-ja.po -o languages/backtothetop-ja.mo"
   }
