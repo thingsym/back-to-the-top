@@ -186,4 +186,54 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 		$this->assertTrue( wp_style_is( 'font-awesome' ) );
 	}
 
+	/**
+	 * @test
+	 * @group basic
+	 */
+	public function load_textdomain() {
+		$loaded = $this->Back_To_The_Top->load_textdomain();
+		$this->assertFalse( $loaded );
+
+		unload_textdomain( 'backtothetop' );
+
+		add_filter( 'locale', [ $this, '_change_locale' ] );
+		add_filter( 'load_textdomain_mofile', [ $this, '_change_textdomain_mofile' ], 10, 2 );
+
+		$loaded = $this->Back_To_The_Top->load_textdomain();
+		$this->assertTrue( $loaded );
+
+		remove_filter( 'load_textdomain_mofile', [ $this, '_change_textdomain_mofile' ] );
+		remove_filter( 'locale', [ $this, '_change_locale' ] );
+
+		unload_textdomain( 'backtothetop' );
+	}
+
+	/**
+	 * hook for load_textdomain
+	 */
+	function _change_locale( $locale ) {
+		return 'ja';
+	}
+
+	function _change_textdomain_mofile( $mofile, $domain ) {
+		if ( $domain === 'backtothetop' ) {
+			$locale = determine_locale();
+			$mofile = plugin_dir_path( __BACK_TO_THE_TOP__ ) . 'languages/backtothetop-' . $locale . '.mo';
+
+			$this->assertSame( $locale, get_locale() );
+			$this->assertFileExists( $mofile );
+		}
+
+		return $mofile;
+	}
+
+	/**
+	 * @test
+	 * @group basic
+	 */
+	public function plugin_metadata_links() {
+		$links = $this->Back_To_The_Top->plugin_metadata_links( array(), plugin_basename( __BACK_TO_THE_TOP__ ) );
+		$this->assertContains( '<a href="https://github.com/sponsors/thingsym">Become a sponsor</a>', $links );
+	}
+
 }
