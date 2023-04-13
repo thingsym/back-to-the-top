@@ -4,16 +4,18 @@ Contributors: thingsym
 Link: https://github.com/thingsym/back-to-the-top
 Donate link: https://github.com/sponsors/thingsym
 Tags: To top, Scroll top, Back to the Top
-Stable tag: 1.2.0
-Tested up to: 6.0.0
+Stable tag: 1.2.1
+Tested up to: 6.2.0
 Requires at least: 4.9
 Requires PHP: 5.6
-License: GPL2 or later
+License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Back to the Top is a WordPress plugin that return to scroll smoothly to the top of the page. You can scroll to the smooth anchor link in the page.
 
 == Description ==
+
+Back to the Top is a WordPress plugin that return to scroll smoothly to the top of the page. You can scroll to the smooth anchor link in the page.
 
 Back to the Top will add a link that return the top of the page for your website. You can customize label, color, display and so in the options page. You don't need to edit your theme.
 
@@ -25,18 +27,52 @@ Back to the Top is also a jQuery plugin. [Back to the Top Project Page here.](ht
 * Selectable the effects easing of the scroll
 * The iconic font supported, Dashicons and Font Awesome
 
-= Test Matrix =
+= Support =
 
-For operation compatibility between PHP version and WordPress version, see below [Github Actions](https://github.com/thingsym/back-to-the-top/actions).
+If you have any trouble, you can use the forums or report bugs.
 
-= Contributing =
+* Forum: [https://wordpress.org/support/plugin/back-to-the-top/](https://wordpress.org/support/plugin/back-to-the-top/)
+* Issues: [https://github.com/thingsym/back-to-the-top/issues](https://github.com/thingsym/back-to-the-top/issues)
 
-= Patches and Bug Fixes =
+= Contribution =
 
 Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
 
-* [back-to-the-top - GitHub](https://github.com/thingsym/back-to-the-top)
-* [Back to the Top - WordPress Plugin](https://wordpress.org/plugins/back-to-the-top/)
+Translating a plugin takes a lot of time, effort, and patience. I really appreciate the hard work from these contributors.
+
+If you have created or updated your own language pack, you can send gettext PO and MO files to author. I can bundle it into plugin.
+
+* [VCS - GitHub](https://github.com/thingsym/back-to-the-top)
+* [Homepage - WordPress Plugin](https://wordpress.org/plugins/back-to-the-top/)
+* [Translate Back to the Top into your language.](https://translate.wordpress.org/projects/wp-plugins/back-to-the-top)
+
+You can also contribute by answering issues on the forums.
+
+* Forum: [https://wordpress.org/support/plugin/back-to-the-top/](https://wordpress.org/support/plugin/back-to-the-top/)
+* Issues: [https://github.com/thingsym/back-to-the-top/issues](https://github.com/thingsym/back-to-the-top/issues)
+
+= Patches and Bug Fixes =
+
+Forking on Github is another good way. You can send a pull request.
+
+1. Fork [Back to the Top](https://github.com/thingsym/back-to-the-top) from GitHub repository
+2. Create a feature branch: git checkout -b my-new-feature
+3. Commit your changes: git commit -am 'Add some feature'
+4. Push to the branch: git push origin my-new-feature
+5. Create new Pull Request
+
+= Contribute guidlines =
+
+If you would like to contribute, here are some notes and guidlines.
+
+* All development happens on the **develop** branch, so it is always the most up-to-date
+* The **master** branch only contains tagged releases
+* If you are going to be submitting a pull request, please submit your pull request to the **develop** branch
+* See about [forking](https://help.github.com/articles/fork-a-repo/) and [pull requests](https://help.github.com/articles/using-pull-requests/)
+
+= Test Matrix =
+
+For operation compatibility between PHP version and WordPress version, see below [Github Actions](https://github.com/thingsym/back-to-the-top/actions).
 
 == Screenshots ==
 
@@ -67,6 +103,14 @@ a#backtothetop-fixed:hover {
 `
 
 == Changelog ==
+
+= 1.2.1 =
+* tested up to 6.2.0
+* fix composer scripts
+* update github actions
+* add msgmerge to composer scripts
+* add support section and enhance contribution section to README
+* fix license
 
 = 1.2.0 =
 * fix phpcs.ruleset.xml

@@ -530,15 +530,15 @@ class Back_To_The_Top {
 	 *
 	 * @access public
 	 *
-	 * @return void
+	 * @return boolean
 	 *
 	 * @since 1.1.0
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain(
+		return load_plugin_textdomain(
 			'backtothetop',
 			false,
-			dirname( plugin_basename( __BACK_TO_THE_TOP__ ) ) . '/languages'
+			plugin_dir_path( __BACK_TO_THE_TOP__ ) . 'languages'
 		);
 	}
 
