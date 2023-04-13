@@ -4,7 +4,7 @@ Contributors: thingsym
 Link: https://github.com/thingsym/back-to-the-top
 Donate link: https://github.com/sponsors/thingsym
 Tags: To top, Scroll top, Back to the Top
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 Tested up to: 6.2.0
 Requires at least: 4.9
 Requires PHP: 5.6
@@ -103,6 +103,14 @@ a#backtothetop-fixed:hover {
 `
 
 == Changelog ==
+
+= 1.2.1 =
+* tested up to 6.2.0
+* fix composer scripts
+* update github actions
+* add msgmerge to composer scripts
+* add support section and enhance contribution section to README
+* fix license
 
 = 1.2.0 =
 * fix phpcs.ruleset.xml
