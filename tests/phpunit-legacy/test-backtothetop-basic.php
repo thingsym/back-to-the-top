@@ -138,7 +138,7 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 			'easeOutBounce', 'easeInOutBounce',
 		);
 
-		$this->assertInternalType( 'array', $this->Back_To_The_Top->get_easings() );
+		$this->assertIsArray( $this->Back_To_The_Top->get_easings() );
 		$this->assertCount( count( $easings ), $this->Back_To_The_Top->get_easings() );
 
 		foreach ( $easings as $easing ) {
@@ -155,7 +155,7 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 			'bottom-right', 'bottom-left', 'top-right', 'top-left',
 		);
 
-		$this->assertInternalType( 'array', $this->Back_To_The_Top->get_displays() );
+		$this->assertIsArray( $this->Back_To_The_Top->get_displays() );
 		$this->assertCount( count( $displays ), $this->Back_To_The_Top->get_displays() );
 
 		foreach ( $displays as $display ) {
