@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package Test
+ * @package Nav_Menu_Trim
  */
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
@@ -23,7 +23,7 @@ require_once $_tests_dir . '/includes/functions.php';
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	require dirname( __FILE__ ) . '/../back-to-the-top.php';
+	require dirname( dirname( __FILE__ ) ) . '/../back-to-the-top.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
