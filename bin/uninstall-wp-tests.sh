@@ -58,7 +58,7 @@ drop_db() {
 	fi
 
 	# delete database
-	mysqladmin drop $DB_NAME --user="$DB_USER" --password="$DB_PASS"$EXTRA --force
+	mysqladmin drop $DB_NAME --user="$DB_USER" --password="$DB_PASS"$EXTRA --force --skip-ssl
 }
 
 delete_wp
