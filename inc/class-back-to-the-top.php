@@ -538,7 +538,7 @@ class Back_To_The_Top {
 		return load_plugin_textdomain(
 			'backtothetop',
 			false,
-			plugin_dir_path( __BACK_TO_THE_TOP__ ) . 'languages'
+			'back-to-the-top/languages'
 		);
 	}
 
