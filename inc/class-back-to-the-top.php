@@ -29,7 +29,7 @@ class Back_To_The_Top {
 	 *
 	 * @var string $option_name   option name
 	 */
-	public $option_name  = 'back_to_the_top_options';
+	public $option_name = 'back_to_the_top_options';
 
 	/**
 	 * Public variable.
@@ -120,7 +120,6 @@ class Back_To_The_Top {
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_style( 'dashicons' );
 		wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', false, '2015-05-12' );
-
 	}
 
 	/**
@@ -415,12 +414,12 @@ class Back_To_The_Top {
 		$default_options = $this->get_default_options();
 
 		$output['duration']            = isset( $input['duration'] ) && is_numeric( $input['duration'] ) && $input['duration'] >= 0 ? $input['duration'] : $default_options['duration'];
-		$output['easing']              = isset( $input['easing'] ) && in_array( $input['easing'], $this->get_easings() ) ? $input['easing'] : $default_options['easing'];
+		$output['easing']              = isset( $input['easing'] ) && in_array( $input['easing'], $this->get_easings(), true ) ? $input['easing'] : $default_options['easing'];
 		$output['offset']              = isset( $input['offset'] ) && is_numeric( $input['offset'] ) ? $input['offset'] : $default_options['offset'];
 		$output['fixed-scroll-offset'] = isset( $input['fixed-scroll-offset'] ) && is_numeric( $input['fixed-scroll-offset'] ) && $input['fixed-scroll-offset'] >= 0 ? $input['fixed-scroll-offset'] : $default_options['fixed-scroll-offset'];
 		$output['fixed-fadeIn']        = isset( $input['fixed-fadeIn'] ) && is_numeric( $input['fixed-fadeIn'] ) && $input['fixed-fadeIn'] >= 0 ? $input['fixed-fadeIn'] : $default_options['fixed-fadeIn'];
 		$output['fixed-fadeOut']       = isset( $input['fixed-fadeOut'] ) && is_numeric( $input['fixed-fadeOut'] ) && $input['fixed-fadeOut'] >= 0 ? $input['fixed-fadeOut'] : $default_options['fixed-fadeOut'];
-		$output['fixed-display']       = isset( $input['fixed-display'] ) && in_array( $input['fixed-display'], $this->get_displays() ) ? $input['fixed-display'] : $default_options['fixed-display'];
+		$output['fixed-display']       = isset( $input['fixed-display'] ) && in_array( $input['fixed-display'], $this->get_displays(), true ) ? $input['fixed-display'] : $default_options['fixed-display'];
 		$output['fixed-top']           = isset( $input['fixed-top'] ) && is_numeric( $input['fixed-top'] ) && $input['fixed-top'] >= 0 ? $input['fixed-top'] : $default_options['fixed-top'];
 		$output['fixed-bottom']        = isset( $input['fixed-bottom'] ) && is_numeric( $input['fixed-bottom'] ) && $input['fixed-bottom'] >= 0 ? $input['fixed-bottom'] : $default_options['fixed-bottom'];
 		$output['fixed-left']          = isset( $input['fixed-left'] ) && is_numeric( $input['fixed-left'] ) && $input['fixed-left'] >= 0 ? $input['fixed-left'] : $default_options['fixed-left'];
@@ -559,7 +558,7 @@ class Back_To_The_Top {
 	 * @since 1.2.0
 	 */
 	public function plugin_metadata_links( $links, $file ) {
-		if ( $file == plugin_basename( __BACK_TO_THE_TOP__ ) ) {
+		if ( $file === plugin_basename( __BACK_TO_THE_TOP__ ) ) {
 			$links[] = '<a href="https://github.com/sponsors/thingsym">' . __( 'Become a sponsor', 'backtothetop' ) . '</a>';
 		}
 

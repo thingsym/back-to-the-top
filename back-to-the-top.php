@@ -24,4 +24,4 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/class-back-to-the-top.php';
 
 if ( class_exists( 'Back_To_The_Top' ) ) {
 	new Back_To_The_Top();
-};
+}
