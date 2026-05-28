@@ -14,7 +14,7 @@ class BackToTheTop_CSS_Test extends WP_UnitTestCase {
 	function css() {
 		$css = $this->Back_To_The_Top->add_css();
 
-		$this->assertRegExp( '/^<style>.*<\/style>$/', $css );
+		$this->assertMatchesRegularExpression( '/^<style>.*<\/style>$/', $css );
 	}
 
 }
