@@ -191,10 +191,23 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	public function load_textdomain() {
+		global $wp_version;
 		$loaded = $this->Back_To_The_Top->load_textdomain();
-		$this->assertFalse( $loaded );
+		if ( version_compare( (string) $wp_version, '6.7', '>=' ) ) {
+			$this->assertTrue( $loaded );
+		}
+		else {
+			$this->assertFalse( $loaded );
+		}
+	}
 
+	/**
+	 * @test
+	 * @group basic
+	 */
+	public function load_textdomain_change() {
 		unload_textdomain( 'backtothetop' );
+		$this->assertFalse( isset( $l10n[ 'backtothetop' ] ) );
 
 		add_filter( 'locale', [ $this, '_change_locale' ] );
 		add_filter( 'load_textdomain_mofile', [ $this, '_change_textdomain_mofile' ], 10, 2 );
@@ -202,10 +215,13 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 		$loaded = $this->Back_To_The_Top->load_textdomain();
 		$this->assertTrue( $loaded );
 
+		$this->assertSame( 'ja', get_locale() );
+
 		remove_filter( 'load_textdomain_mofile', [ $this, '_change_textdomain_mofile' ] );
 		remove_filter( 'locale', [ $this, '_change_locale' ] );
 
 		unload_textdomain( 'backtothetop' );
+		$this->assertFalse( isset( $l10n[ 'backtothetop' ] ) );
 	}
 
 	/**
@@ -217,7 +233,7 @@ class BackToTheTop_Basic_Test extends WP_UnitTestCase {
 
 	function _change_textdomain_mofile( $mofile, $domain ) {
 		if ( $domain === 'backtothetop' ) {
-			$locale = determine_locale();
+			$locale = get_locale();
 			$mofile = plugin_dir_path( __BACK_TO_THE_TOP__ ) . 'languages/backtothetop-' . $locale . '.mo';
 
 			$this->assertSame( $locale, get_locale() );

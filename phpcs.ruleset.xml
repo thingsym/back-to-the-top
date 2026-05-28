@@ -43,7 +43,9 @@
   <rule ref="WordPress.WP.I18n">
     <properties>
       <!-- Value: replace the text domain used. -->
-      <property name="text_domain" type="array" value="backtothetop" />
+      <property name="text_domain" type="array">
+        <element value="backtothetop"/>
+      </property>
     </properties>
   </rule>
 

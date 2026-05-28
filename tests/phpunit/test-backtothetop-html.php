@@ -15,7 +15,7 @@ class BackToTheTop_HTML_Test extends WP_UnitTestCase {
 	function html() {
 		$html = $this->Back_To_The_Top->add_html();
 
-		$this->assertRegExp( '/^<a href="#" id="backtothetop-fixed".*>.*<\/a>$/', $html );
+		$this->assertMatchesRegularExpression( '/^<a href="#" id="backtothetop-fixed".*>.*<\/a>$/', $html );
 	}
 
 	/**
@@ -47,7 +47,7 @@ class BackToTheTop_HTML_Test extends WP_UnitTestCase {
 		update_option( 'back_to_the_top_options', $options );
 		$html = $this->Back_To_The_Top->add_html();
 
-		$this->assertRegExp( '/^<a href="#" id="backtothetop-fixed".*>test test<\/a>$/', $html );
+		$this->assertMatchesRegularExpression( '/^<a href="#" id="backtothetop-fixed".*>test test<\/a>$/', $html );
 	}
 
 }
