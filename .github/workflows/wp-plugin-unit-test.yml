@@ -189,6 +189,7 @@ jobs:
       - name: phpcs --config-set
         run: |
           phpcs --config-set installed_paths /home/runner/.composer/vendor/wp-coding-standards/wpcs,/home/runner/.composer/vendor/phpcsstandards/phpcsextra,/home/runner/.composer/vendor/phpcsstandards/phpcsutils,/home/runner/.composer/vendor/phpcompatibility/php-compatibility,/home/runner/.composer/vendor/phpcompatibility/phpcompatibility-paragonie,/home/runner/.composer/vendor/phpcompatibility/phpcompatibility-wp
+
           phpcs -i
 
       - name: Run phpcs
