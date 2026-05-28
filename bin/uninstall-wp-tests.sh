@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ $# -lt 3 ]; then
-	echo "usage: $0 <db-name> <db-user> <db-pass> [db-host] [wp-version]"
+	echo "usage: $0 <db-name> <db-user> <db-pass> [db-host] [wp-version] [skip-ssl]"
 	exit 1
 fi
 
@@ -10,6 +10,7 @@ DB_USER=$2
 DB_PASS=$3
 DB_HOST=${4-localhost}
 WP_VERSION=${5-latest}
+SKIP_SSL=${6-false}
 
 TMPDIR=${TMPDIR-/tmp}
 TMPDIR=$(echo $TMPDIR | sed -e "s/\/$//")
@@ -57,8 +58,12 @@ drop_db() {
 		fi
 	fi
 
+	if [ ${SKIP_SSL} = "true" ]; then
+		EXTRA+=" --skip-ssl"
+	fi
+
 	# delete database
-	mysqladmin drop $DB_NAME --user="$DB_USER" --password="$DB_PASS"$EXTRA --force --skip-ssl
+	mysqladmin drop $DB_NAME --user="$DB_USER" --password="$DB_PASS"$EXTRA --force
 }
 
 delete_wp
