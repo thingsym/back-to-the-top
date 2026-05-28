@@ -6,7 +6,7 @@ Back to the Top will add a link that return the top of the page for your website
 
 Back to the Top is also a jQuery plugin. [Back to the Top Project Page here.](http://project.thingslabo.com/jquery.backtothetop) You can set easily WordPress plugin ’Back to the Top’ than jQuery plugin ones.
 
-### Features
+## Features
 
 * Customizable options in the options page
 * Selectable the effects easing of the scroll
@@ -17,8 +17,8 @@ Back to the Top is also a jQuery plugin. [Back to the Top Project Page here.](ht
 1. Download and unzip files. Or install 'Back to the Top' plugin using the WordPress plugin installer. In that case, skip 2.
 2. Upload 'backtothetop' to the '/wp-content/plugins/' directory.
 3. Activate the plugin through the 'Plugins' menu in WordPress.
-5. Go to the 'Back to the Top' options page through the 'Appearance' menu in WordPress.
-4. Have fun!
+4. Go to the 'Back to the Top' options page through the 'Appearance' menu in WordPress.
+5. Have fun!
 
 ## Options page screenshot
 
@@ -30,12 +30,12 @@ You can customize Stylesheet by the Custom CSS. See the following example.
 
 ```css
 a#backtothetop-fixed {
-	background: #f1f1f1;
-	border-radius: 10%;
-	padding: 0.2em;
+  background: #f1f1f1;
+  border-radius: 10%;
+  padding: 0.2em;
 }
 a#backtothetop-fixed:hover {
-	background: #fefefe;
+  background: #fefefe;
 }
 ```
 
@@ -94,86 +94,86 @@ For operation compatibility between PHP version and WordPress version, see below
 ## Changelog
 
 * Version 1.2.1
-	* tested up to 6.2.0
-	* fix composer scripts
-	* update github actions
-	* add msgmerge to composer scripts
-	* add support section and enhance contribution section to README
-	* fix license
+  * tested up to 6.2.0
+  * fix composer scripts
+  * update github actions
+  * add msgmerge to composer scripts
+  * add support section and enhance contribution section to README
+  * fix license
 * Version 1.2.0
-	* fix phpcs.ruleset.xml
-	* fix multiple assignments
-	* declare uninstall method as public method
-	* separate the file structure for class file
-	* add @package tag
-	* fix class name according to naming convention
-	* fix constants to uppercase
-	* update japanese translation
-	* update pot
-	* change makepot from php script to wp cli
-	* change plugin initialization to plugins_loaded hook
-	* replace assert from assertEquals to assertSame
+  * fix phpcs.ruleset.xml
+  * fix multiple assignments
+  * declare uninstall method as public method
+  * separate the file structure for class file
+  * add @package tag
+  * fix class name according to naming convention
+  * fix constants to uppercase
+  * update japanese translation
+  * update pot
+  * change makepot from php script to wp cli
+  * change plugin initialization to plugins_loaded hook
+  * replace assert from assertEquals to assertSame
 * Version 1.1.1
-	* update wp-plugin-unit-test.yml
-	* bump up yoast/phpunit-polyfills version
-	* change os to ubuntu-20.04 for ci
-	* add Upgrade Notice
-	* change requires at least to wordpress 4.9
-	* change requires to PHP 5.6
-	* add test case
+  * update wp-plugin-unit-test.yml
+  * bump up yoast/phpunit-polyfills version
+  * change os to ubuntu-20.04 for ci
+  * add Upgrade Notice
+  * change requires at least to wordpress 4.9
+  * change requires to PHP 5.6
+  * add test case
 * Version 1.1.0
-	* add composer scripts
-	* update japanese translation
-	* update pot
-	* update composer dependencies
-	* add test case
-	* change method name from admin_init to register_settings
-	* change method name from validate to validate_options
-	* fix textdomain
-	* add plugin_metadata_links method
-	* change add_filter to plugin_action_links_**
-	* add init method
-	* add Constants
-	* add checking Back_to_the_Top class
-	* add checking ABSPATH
-	* add load_textdomain method
-	* remove protected variable
-	* change from protected variable to public variable for unit test
-	* update composer.json
-	* add timeout-minutes to workflows
-	* add phpunit-polyfills
-	* update wordpress-test-matrix
-	* add sponsor link
-	* add FUNDING.yml
-	* add GitHub actions for CI/CD, remove .travis.yml
+  * add composer scripts
+  * update japanese translation
+  * update pot
+  * update composer dependencies
+  * add test case
+  * change method name from admin_init to register_settings
+  * change method name from validate to validate_options
+  * fix textdomain
+  * add plugin_metadata_links method
+  * change add_filter to plugin_action_links_**
+  * add init method
+  * add Constants
+  * add checking Back_to_the_Top class
+  * add checking ABSPATH
+  * add load_textdomain method
+  * remove protected variable
+  * change from protected variable to public variable for unit test
+  * update composer.json
+  * add timeout-minutes to workflows
+  * add phpunit-polyfills
+  * update wordpress-test-matrix
+  * add sponsor link
+  * add FUNDING.yml
+  * add GitHub actions for CI/CD, remove .travis.yml
 * Version 1.0.5
-	* fix indent and reformat with phpcs and phpcbf
-	* add composer.json for test
-	* add static code analysis config
+  * fix indent and reformat with phpcs and phpcbf
+  * add composer.json for test
+  * add static code analysis config
 * Version 1.0.4
-	* change Requires at least from 3.4 to 4.0
-	* improve CI environment
-	* updated: update jquery.backtothetop.js v1.1.7
+  * change Requires at least from 3.4 to 4.0
+  * improve CI environment
+  * updated: update jquery.backtothetop.js v1.1.7
 * Version 1.0.3
-	* fixed: fix backtothetop.admin.js
-	* updated: update jquery.backtothetop.js v1.1.6
+  * fixed: fix backtothetop.admin.js
+  * updated: update jquery.backtothetop.js v1.1.6
 * Version 1.0.2
-	* fixed: fix handle and option name
-	* fixed: fix typo
+  * fixed: fix handle and option name
+  * fixed: fix typo
 * Version 1.0.1
-	* fixed: refactoring by the PHP_CodeSniffer
-	* updated: update jquery.backtothetop.js v1.1.5
-	* added: add PHPUnit and tests
+  * fixed: refactoring by the PHP_CodeSniffer
+  * updated: update jquery.backtothetop.js v1.1.5
+  * added: add PHPUnit and tests
 * Version 1.0.0
-	* initial release
+  * initial release
 
 ## Upgrade Notice
 
 * Version 1.1.1
-	* Requires at least version 4.9 of the WordPress
-	* Requires PHP version 5.6
+  * Requires at least version 4.9 of the WordPress
+  * Requires PHP version 5.6
 * Version 1.0.4
-	* Requires at least version 4.0 of the WordPress
+  * Requires at least version 4.0 of the WordPress
 
 ## License
 
