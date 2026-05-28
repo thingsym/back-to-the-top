@@ -4,7 +4,7 @@ Contributors: thingsym
 Link: https://github.com/thingsym/back-to-the-top
 Donate link: https://github.com/sponsors/thingsym
 Tags: To top, Scroll top, Back to the Top
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Tested up to: 7.0
 Requires at least: 5.9
 Requires PHP: 7.4
@@ -103,6 +103,14 @@ a#backtothetop-fixed:hover {
 `
 
 == Changelog ==
+= 1.2.2 =
+* tested up to 7.0
+* update github workflows
+* add SKIP_SSL argument to install-wp-tests.sh
+* update wpcs v3
+* update composer dependencies
+* fix plugin_textdomain rel path
+* fix test case
 
 = 1.2.1 =
 * tested up to 6.2.0

@@ -93,6 +93,14 @@ For operation compatibility between PHP version and WordPress version, see below
 
 ## Changelog
 
+* Version 1.2.2
+  * tested up to 7.0
+  * update github workflows
+  * add SKIP_SSL argument to install-wp-tests.sh
+  * update wpcs v3
+  * update composer dependencies
+  * fix plugin_textdomain rel path
+  * fix test case
 * Version 1.2.1
   * tested up to 6.2.0
   * fix composer scripts
