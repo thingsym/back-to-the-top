@@ -22,8 +22,8 @@ jobs:
       fail-fast: false
 
       matrix:
-        os: [ ubuntu-22.04 ]
-        php: [ '7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3' ]
+        os: [ ubuntu-24.04 ]
+        php: [ '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5' ]
         wordpress: [ latest, nightly ]
         multisite: [ 0 ]
 
@@ -34,7 +34,7 @@ jobs:
 
     services:
       database:
-        image: mysql:5.7
+        image: mysql:8.4
         ports:
           - 3306:3306
         env:
@@ -52,8 +52,9 @@ jobs:
       - name: Install PHPUnit
         run: |
           # for PHP Compatibility - https://phpunit.de/supported-versions.html
+          # WordPress Versions - https://make.wordpress.org/core/handbook/references/phpunit-compatibility-and-wordpress-versions/
           if [[ ${PHP_VERSION:0:1} == "8" ]] ; then
-            composer global require "phpunit/phpunit=8.*"
+            composer global require "phpunit/phpunit=9.*"
           elif [[ $PHP_VERSION == "7.0" ]] ; then
             composer global require "phpunit/phpunit=5.7.*|6.*"
           # for WP_VERSION < 4.6 due to PHP Fatal error: Class 'PHPUnit_Framework_TestCase' not found
@@ -63,11 +64,11 @@ jobs:
           elif [[ ${PHP_VERSION:0:1} == "7" ]] && [[ "$WP_VERSION" < 5.0* ]] ; then
             composer global require "phpunit/phpunit=5.7.*|6.*"
           else
-            composer global require "phpunit/phpunit=4.8.*|5.4.*|5.7.*|6.*|7.*"
+            composer global require "phpunit/phpunit=4.8.*|5.4.*|5.7.*|6.*|7.*|8.*|9.*"
           fi
 
       - name: Install PHPUnit Polyfills library
-        run: composer global require "yoast/phpunit-polyfills=1.1.0"
+        run: composer global require "yoast/phpunit-polyfills=2"
 
       - name: Install wp tests
         run: bash bin/install-wp-tests.sh wordpress_test root root 0.0.0.0:3306 $WP_VERSION
@@ -89,7 +90,7 @@ jobs:
       fail-fast: false
 
       matrix:
-        os: [ ubuntu-22.04 ]
+        os: [ ubuntu-24.04 ]
         # WordPress 6.3 or later requires at least 7.0.0
         php: [ '5.6' ]
         wordpress: [ '6.1', '6.2' ]
@@ -135,7 +136,7 @@ jobs:
           fi
 
       - name: Install PHPUnit Polyfills library
-        run: composer global require "yoast/phpunit-polyfills=1.1.0"
+        run: composer global require "yoast/phpunit-polyfills=2"
 
       - name: Install wp tests
         run: bash bin/install-wp-tests.sh wordpress_test root root 0.0.0.0:3306 $WP_VERSION
