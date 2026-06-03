@@ -95,9 +95,12 @@ For operation compatibility between PHP version and WordPress version, see below
 
 * Version 1.2.2
   * tested up to 7.0
+  * change requires at least to wordpress 5.9
+  * change requires to PHP 7.4
+  * add phpcs job
   * update github workflows
   * add SKIP_SSL argument to install-wp-tests.sh
-  * update wpcs v3
+  * update phpunit v9 and wpcs v3
   * update composer dependencies
   * fix plugin_textdomain rel path
   * fix test case

@@ -15,7 +15,7 @@
   </testsuites>
   <filter>
     <whitelist processUncoveredFilesFromWhitelist="true">
-      <file>.back-to-the-top.php</file>
+      <file>./back-to-the-top.php</file>
       <directory suffix=".php">./inc</directory>
     </whitelist>
   </filter>
