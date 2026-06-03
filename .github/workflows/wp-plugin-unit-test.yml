@@ -23,6 +23,7 @@ jobs:
 
       matrix:
         os: [ ubuntu-24.04 ]
+        # PHP Compatibility and WordPress Versions - https://make.wordpress.org/core/handbook/references/php-compatibility-and-wordpress-versions/
         php: [ '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5' ]
         wordpress: [ latest, nightly ]
         multisite: [ 0 ]
@@ -55,19 +56,19 @@ jobs:
       - name: Install PHPUnit
         run: |
           # for PHP Compatibility - https://phpunit.de/supported-versions.html
-          # WordPress Versions - https://make.wordpress.org/core/handbook/references/phpunit-compatibility-and-wordpress-versions/
+          # PHPUnit Compatibility and WordPress Versions - https://make.wordpress.org/core/handbook/references/phpunit-compatibility-and-wordpress-versions/
           if [[ ${PHP_VERSION:0:1} == "8" ]] ; then
             composer global require "phpunit/phpunit=9.*"
           elif [[ $PHP_VERSION == "7.0" ]] ; then
-            composer global require "phpunit/phpunit=5.7.*|6.*"
+            composer global require "phpunit/phpunit=5.*|6.*"
           # for WP_VERSION < 4.6 due to PHP Fatal error: Class 'PHPUnit_Framework_TestCase' not found
           elif [[ ${PHP_VERSION:0:1} == "7" ]] && [[ "$WP_VERSION" < 4.6* ]] ; then
-            composer global require "phpunit/phpunit=5.7.*"
+            composer global require "phpunit/phpunit=5.*"
           # for WP_VERSION < 5.0 due to Fatal error: Class PHPUnit_Util_Test may not inherit from final class (PHPUnit\Util\Test)
           elif [[ ${PHP_VERSION:0:1} == "7" ]] && [[ "$WP_VERSION" < 5.0* ]] ; then
-            composer global require "phpunit/phpunit=5.7.*|6.*"
+            composer global require "phpunit/phpunit=5.*|6.*"
           else
-            composer global require "phpunit/phpunit=4.8.*|5.4.*|5.7.*|6.*|7.*|8.*|9.*"
+            composer global require "phpunit/phpunit=8.*|9.*"
           fi
 
       - name: Install PHPUnit Polyfills library
@@ -77,12 +78,7 @@ jobs:
         run: bash bin/install-wp-tests.sh wordpress_test root root 0.0.0.0:3306 $WP_VERSION
 
       - name: Run PHPUnit - WordPress ${{ matrix.wordpress }} * Multisite ${{ matrix.multisite }}
-        run: |
-          if [[ $PHP_VERSION == "5.6" ]] || [[ $PHP_VERSION == "7.0" ]] ; then
-            phpunit --configuration phpunit-legacy.xml
-          else
-            phpunit
-          fi
+        run: phpunit
 
   phpunit-legacy:
     name: WordPress ${{ matrix.wordpress }} * PHP v${{ matrix.php }} * ${{ matrix.os }} * Multisite ${{ matrix.multisite }}
@@ -94,9 +90,8 @@ jobs:
 
       matrix:
         os: [ ubuntu-24.04 ]
-        # WordPress 6.3 or later requires at least 7.0.0
-        php: [ '5.6' ]
-        wordpress: [ '6.1', '6.2' ]
+        php: [ '7.4' ]
+        wordpress: [ '5.9', '6.3' ]
         multisite: [ 0 ]
 
     env:
@@ -106,7 +101,7 @@ jobs:
 
     services:
       database:
-        image: mysql:5.7
+        image: mysql:8.4
         ports:
           - 3306:3306
         env:
@@ -126,19 +121,18 @@ jobs:
 
       - name: Install PHPUnit
         run: |
-          # for PHP Compatibility - https://phpunit.de/supported-versions.html
           if [[ ${PHP_VERSION:0:1} == "8" ]] ; then
-            composer global require "phpunit/phpunit=8.*"
+            composer global require "phpunit/phpunit=9.*"
           elif [[ $PHP_VERSION == "7.0" ]] ; then
-            composer global require "phpunit/phpunit=5.7.*|6.*"
+            composer global require "phpunit/phpunit=5.*|6.*"
           # for WP_VERSION < 4.6 due to PHP Fatal error: Class 'PHPUnit_Framework_TestCase' not found
           elif [[ ${PHP_VERSION:0:1} == "7" ]] && [[ "$WP_VERSION" < 4.6* ]] ; then
-            composer global require "phpunit/phpunit=5.7.*"
+            composer global require "phpunit/phpunit=5.*"
           # for WP_VERSION < 5.0 due to Fatal error: Class PHPUnit_Util_Test may not inherit from final class (PHPUnit\Util\Test)
           elif [[ ${PHP_VERSION:0:1} == "7" ]] && [[ "$WP_VERSION" < 5.0* ]] ; then
-            composer global require "phpunit/phpunit=5.7.*|6.*"
+            composer global require "phpunit/phpunit=5.*|6.*"
           else
-            composer global require "phpunit/phpunit=4.8.*|5.4.*|5.7.*|6.*|7.*"
+            composer global require "phpunit/phpunit=8.*|9.*"
           fi
 
       - name: Install PHPUnit Polyfills library
@@ -148,7 +142,12 @@ jobs:
         run: bash bin/install-wp-tests.sh wordpress_test root root 0.0.0.0:3306 $WP_VERSION
 
       - name: Run PHPUnit - WordPress ${{ matrix.wordpress }} * Multisite ${{ matrix.multisite }}
-        run: phpunit --configuration phpunit-legacy.xml
+        run: |
+          if [[ $PHP_VERSION == "5.6" ]] || [[ $PHP_VERSION == "7.0" ]] ; then
+            phpunit --configuration phpunit-legacy.xml
+          else
+            phpunit
+          fi
 
   phpcs:
     name: PHP CodeSniffer
@@ -184,7 +183,7 @@ jobs:
           composer global require --dev wp-coding-standards/wpcs:"^3.0"
           composer global require --dev phpcsstandards/phpcsutils:"^1.0"
           composer global require --dev phpcsstandards/phpcsextra:"^1.0"
-          composer global require --dev "phpcompatibility/phpcompatibility-wp=*"
+          composer global require --dev phpcompatibility/phpcompatibility-wp:"*"
 
       - name: phpcs --config-set
         run: |
